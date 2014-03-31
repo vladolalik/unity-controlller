@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="device_number">
+    	<item>1</item>
+    	<item>2</item>
+    </string-array>
+    <string-array name="action_list">
+        <item>Home</item>
+        <item>TouchPad</item>
+        <item>Circle</item>
+        <item>Gamepad</item>
+        <item>Gyroskop</item>
+    </string-array>
+    
+    <string-array name="typesOfControl">
+        <item>HOME</item>
+        <item>TOUCHPAD</item>
+        <item>CIRCLE</item>
+        <item>JOYSTICK</item>
+        <item>GYROSKOP</item>
+    </string-array>
+</resources>

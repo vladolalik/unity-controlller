@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Unity Controller</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <item name="PORT" type="integer">4444</item>
+
+    <string name="CONNECT_TO_SERVER">ConnectToServer</string>
+    <string name="CONNECT_ACCEPT">ConnectAccept</string>
+    <string name="CONNECT_DECLINE">ConnectDecline</string>
+    <string name="ac_connect">Connect to Server</string>
+    <string name="number_of_device">Device number</string>
+    <string name="count_of_device">Count of devices</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="saveOptions">Send request to Server</string>
+	<string name="cancel">Cancel</string>
+	<string name="DEV_NUMBER">DEVICE_NUMBER</string>
+	<string name="MSG_DEV_NUMBER">ChangeNoClient</string>
+	<string name="SET_NUMBER_OF_DEVICES">SetNoDev</string>
+	<string name="SELECT_SERVER">Select Server</string>
+	<string name="changeServer">Change Server</string>
+	<string name="COUNT_OF_DEVICES">CountOfDev</string>
+	<string name="movement">Movement</string>
+	<string name="rotate">Rotate</string>
+	<string name="up">Up</string>
+	<string name="down">Down</string>
+	<string name="right">Right</string>
+	<string name="left">Left</string>
+	<string name="CHANGE_CONTROL">ChangeControl</string>
+	<string name="TYPE_OF_CONTROL">	TypeOfControl</string>
+	<string name="JOYSTICK_MV_LEFT">MVLeft</string>
+	<string name="JOYSTICK_MV_RIGHT">MVRight</string>
+	<string name="JOYSTICK_MV_FV">MVFV</string>
+	<string name="JOYSTICK_MV_BACK">MVBack</string>
+	<string name="JOYSTICK_ROTATE_X">RotateX</string>
+	<string name="JOYSTICK_ROTATE_Y">RotateY</string>
+	<string name="IP_ADRESS">ipadress</string>
+</resources>
