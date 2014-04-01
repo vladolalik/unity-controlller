@@ -17,23 +17,6 @@
             android:layout_width="298dp"
             android:layout_height="match_parent" >
 
-            <Button
-                android:id="@+id/buttonMovRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/buttonMovFV"
-                android:layout_toRightOf="@+id/buttonMovFV"
-                android:background="@drawable/effects_right_arrow" />
-
-            <Button
-                android:id="@+id/buttonMovBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/buttonMovRight"
-                android:layout_toLeftOf="@+id/buttonMovRight"
-                android:layout_toRightOf="@+id/buttonMovLeft"
-                android:background="@drawable/effects_back_arrow" />
-
             <TextView
                 android:id="@+id/textMove"
                 android:layout_width="wrap_content"
@@ -43,29 +26,27 @@
                 android:text="@string/movement"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <Button
-                android:id="@+id/buttonMovLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/buttonMovFV"
-                android:background="@drawable/effects_left_arrow" />
-
-            <Button
-                android:id="@+id/buttonMovFV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/buttonMovLeft"
+            <ImageView
+                android:id="@+id/imgViewJoystickMov"
+                android:layout_width="180sp"
+                android:layout_height="180sp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/effects_fv_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/joystick" />
+
+            <ImageView
+                android:id="@+id/imgViewJoystickMidMov"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/joystick_middle_mov" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-
-          
 
             <TextView
                 android:id="@+id/TextRotate"
@@ -91,9 +72,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/joystick_middle" />
-
         </RelativeLayout>
-
     </LinearLayout>
 
 </RelativeLayout>

@@ -46,19 +46,20 @@ public final class R {
         public static final int ic_launcher=0x7f020011;
         public static final int joystick=0x7f020012;
         public static final int joystick_middle=0x7f020013;
-        public static final int left_arrow=0x7f020014;
-        public static final int left_arrow_pressed=0x7f020015;
-        public static final int right_arrow=0x7f020016;
-        public static final int right_arrow_pressed=0x7f020017;
-        public static final int touchpad_icon=0x7f020018;
+        public static final int joystick_middle_mov=0x7f020014;
+        public static final int left_arrow=0x7f020015;
+        public static final int left_arrow_pressed=0x7f020016;
+        public static final int right_arrow=0x7f020017;
+        public static final int right_arrow_pressed=0x7f020018;
+        public static final int touchpad_icon=0x7f020019;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0008;
         public static final int TextRotate=0x7f0a0005;
-        public static final int action_change_server=0x7f0a0016;
-        public static final int action_connect=0x7f0a0015;
-        public static final int action_help=0x7f0a0017;
-        public static final int action_settings=0x7f0a0018;
+        public static final int action_change_server=0x7f0a0018;
+        public static final int action_connect=0x7f0a0017;
+        public static final int action_help=0x7f0a0019;
+        public static final int action_settings=0x7f0a001a;
         public static final int buttonMovBack=0x7f0a000b;
         public static final int buttonMovFV=0x7f0a000a;
         public static final int buttonMovLeft=0x7f0a000c;
@@ -71,12 +72,14 @@ public final class R {
         public static final int dev_number=0x7f0a0002;
         public static final int fragment_container=0x7f0a0001;
         public static final int imageViewJoyStickMiddle=0x7f0a0012;
-        public static final int imgIcon=0x7f0a0013;
+        public static final int imgIcon=0x7f0a0015;
         public static final int imgViewJoyStick=0x7f0a0011;
+        public static final int imgViewJoystickMidMov=0x7f0a0014;
+        public static final int imgViewJoystickMov=0x7f0a0013;
         public static final int num_of_dev=0x7f0a0004;
         public static final int saveButton=0x7f0a0007;
         public static final int textMove=0x7f0a0003;
-        public static final int txtTitle=0x7f0a0014;
+        public static final int txtTitle=0x7f0a0016;
         public static final int txtview=0x7f0a0000;
     }
     public static final class integer {
@@ -88,7 +91,8 @@ public final class R {
         public static final int gamepad_fragment=0x7f030002;
         public static final int gamepad_fragment1=0x7f030003;
         public static final int home_fragment=0x7f030004;
-        public static final int list_item_title_navigation=0x7f030005;
+        public static final int joystick_fragment=0x7f030005;
+        public static final int list_item_title_navigation=0x7f030006;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f090000;

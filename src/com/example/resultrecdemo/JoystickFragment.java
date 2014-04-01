@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
- public class GamePadFragment1 extends Fragment{
+ public class JoystickFragment extends Fragment{
 	
 	DatagramSocket socket;
 	InetAddress serverIP;
@@ -62,58 +62,11 @@ import android.widget.Toast;
 	       //Inflate the layout for this fragment
 		 getActivity().setRequestedOrientation(
 		            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		 View view = inflater.inflate(R.layout.gamepad_fragment1, container, false);
-		 Button mvLeft = (Button) view.findViewById(R.id.buttonMovLeft);
-		 mvLeft.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvLeft");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_LEFT));
-			}
-		 });
-		 
-		 Button mvRight = (Button) view.findViewById(R.id.buttonMovRight);
-		 mvRight.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvRight");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_RIGHT));
-			}
-		 });
-
-		 Button mvUp = (Button) view.findViewById(R.id.buttonMovFV);
-		 mvUp.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvUp");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_FV));
-			}
-		 });
-		 
-		 Button mvDown = (Button) view.findViewById(R.id.buttonMovBack);
-		 mvDown.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_BACK));
-			}
-		 });
+		 View view = inflater.inflate(R.layout.joystick_fragment, container, false);
+	
 		 
 		 final ImageView imgView = (ImageView) view.findViewById(R.id.imgViewJoyStick);
 		 final ImageView joystickMiddle = (ImageView) view.findViewById(R.id.imageViewJoyStickMiddle);
-		 float[] m=new float[9];
-		 final Matrix mat = joystickMiddle.getImageMatrix();
-		 mat.getValues(m);
-		 
-		
 		 
 		 imgView.setOnTouchListener(new View.OnTouchListener() {
 		 
@@ -148,7 +101,7 @@ import android.widget.Toast;
 				 		// pohyb gulicky v strede
 				 		Log.d("JOYSTICK", String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
 				 		
-				 		PointF evPoint=moveJoystick(event.getX(),event.getY(),joystickMiddle,imgView);
+				 		PointF evPoint=moveJoystick(event.getX(),event.getY(),0,0,joystickMiddle,imgView);
 						joystickMiddle.setX(evPoint.x-dx);
 						joystickMiddle.setY(evPoint.y-dy);
 						
@@ -188,36 +141,113 @@ import android.widget.Toast;
 			}
 		});
 		 
+		 final ImageView imgViewMov = (ImageView) view.findViewById(R.id.imgViewJoystickMov);
+		 final ImageView joystickMidMov = (ImageView) view.findViewById(R.id.imgViewJoystickMidMov);
+		 imgViewMov.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				float x, y, dx=0, dy=0; 
+				int origX=joystickMidMov.getLeft();
+				int origY=joystickMidMov.getTop();
+				// bod v strede joysticku
+				final PointF middlePoint=new PointF(imgViewMov.getWidth()/2, imgViewMov.getHeight()/2);
+				
+				// bod v strede navrchu joysticku, podla ktoreho budem pocitat uhol natocenia
+				final PointF zeroPoint=new PointF(imgViewMov.getWidth()/2, 0);
+				Log.d("middlePoint", middlePoint.x + " x " + middlePoint.y);
+				Log.d("zeroPoint", zeroPoint.x + " x " + zeroPoint.y);
+				
+				 switch(event.getAction()){
+				 	case MotionEvent.ACTION_DOWN: {
+				 		origX=joystickMidMov.getLeft();
+				 		origY=joystickMidMov.getTop();
+				 		 Log.d("stred xxy",String.valueOf(origX)+" x "+String.valueOf(origY));
+				 		x=event.getX();
+				 		y=event.getY();
+				 		dx=x-joystickMidMov.getX();
+				 		dy=y-joystickMidMov.getY();
+				 		Log.d("dx", String.valueOf(dx));
+				 		break;
+				 	}
+				 	
+				 	case MotionEvent.ACTION_MOVE: {
+				 		// pohyb gulicky v strede
+				 		Log.d("JOYSTICK", String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+				 		
+				 		PointF evPoint=moveJoystick(event.getX(),event.getY(),50,0,joystickMidMov,imgViewMov);
+						joystickMidMov.setX(evPoint.x-dx);
+						joystickMidMov.setY(evPoint.y-dy);
+						
+						// vypocet uhlu
+						PointF touchPoint=new PointF(event.getX(), event.getY()); // suradnice bodu dotyku
+						float angle=(float) Math.abs(Math.toDegrees(Math.atan2(touchPoint.x - middlePoint.x,touchPoint.y - middlePoint.y)-
+		                        Math.atan2(zeroPoint.x- middlePoint.x,zeroPoint.y- middlePoint.y)));
+						Log.d("Angle", String.valueOf(angle));
+						
+						// vzdialenost bodu dotyku od stredu
+						
+						float vMidToTouch=(float) Math.sqrt((middlePoint.x-touchPoint.x)*(middlePoint.x-touchPoint.x) + (middlePoint.y-touchPoint.y)*(middlePoint.y-touchPoint.y));
+						Log.d("Intensity", String.valueOf(vMidToTouch));
+						sendMessage(getResources().getString(R.string.movement)+" "+String.valueOf(angle)+" "+String.valueOf(vMidToTouch));
+						/*float vMidToZer=(float) Math.sqrt((middlePoint.x-zeroPoint.x)*(middlePoint.x-zeroPoint.x) + (middlePoint.y-zeroPoint.y)*(middlePoint.y-zeroPoint.y));
+						float vMidToTouch=(float) Math.sqrt((middlePoint.x-touchPoint.x)*(middlePoint.x-touchPoint.x) + (middlePoint.y-touchPoint.y)*(middlePoint.y-touchPoint.y));
+						float vZeroToTouch=(float) Math.sqrt((zeroPoint.x-touchPoint.x)*(zeroPoint.x-touchPoint.x) + (zeroPoint.y-touchPoint.y)*(zeroPoint.y-touchPoint.y));
+						
+						float angle=(float) Math.acos((vMidToZer*vMidToZer + vMidToTouch*vMidToTouch-vZeroToTouch*vZeroToTouch)/(2*vMidToZer*vMidToTouch));
+						Log.d("angle", String.valueOf(Math.toDegrees(angle)));
+						Log.d("angle radians", String.valueOf(angle));
+						*/
+						
+						break;
+				 	}
+				 	
+				 	case MotionEvent.ACTION_UP: {
+				 		Log.d("orgix", Float.toString(origX));
+				 		joystickMidMov.setX(origX);
+				 		joystickMidMov.setY(origY);
+				 		
+						break;
+				 	}
+				 		
+				 }
+				return true;
+			}
+		});
+		 
 	     return view;
 	   }
+	
+	
 	
 	/**
 	 * Funkcia ktora vypocita hranicne body, kam sa moze gulicka v strede pohnut
 	 * 
 	 * @param eX
 	 * @param eY
-	 * @param joystickMiddle
-	 * @param imgView
+	 * @param jMid
+	 * @param joystick
 	 * @return float[] 
 	 */
-	private PointF moveJoystick(float eX, float eY,ImageView joystickMiddle, ImageView imgView){
-		float bulgaria_const=0;
+	private PointF moveJoystick(float eX, float eY,float bulgaria_const_X,float bulgaria_const_Y  ,ImageView jMid, ImageView joystick){
+		
 		PointF p=new PointF();
 		p.x=eX;
 		p.y=eY;
 		
- 		if (eX<0){//((joystickMiddle.getWidth()/2))){
- 			p.x=0;//(joystickMiddle.getWidth()/2); 
- 			Log.d("joystick width", String.valueOf(joystickMiddle.getWidth()));
+ 		if (eX<0 + bulgaria_const_X){//((joystickMiddle.getWidth()/2))){
+ 			p.x=0 + bulgaria_const_X;//(joystickMiddle.getWidth()/2); 
+ 			Log.d("joystick width", String.valueOf(jMid.getWidth()));
  		}
- 		if (eX>(imgView.getWidth()-(joystickMiddle.getWidth()/2)+bulgaria_const)){
- 			p.x=(imgView.getWidth()+bulgaria_const)-(joystickMiddle.getWidth()/2);
+ 		if (eX>(joystick.getWidth()-(jMid.getWidth()/2)+bulgaria_const_X)){
+ 			p.x=(joystick.getWidth()+bulgaria_const_X)-(jMid.getWidth()/2);
  		}
- 		if (eY<0){//((joystickMiddle.getHeight()/2))){
- 			p.y=0;//(joystickMiddle.getHeight()/2); 
+ 		if (eY<0+bulgaria_const_Y){//((joystickMiddle.getHeight()/2))){
+ 			p.y=0+bulgaria_const_Y;//(joystickMiddle.getHeight()/2); 
  		}
- 		if (eY>(imgView.getHeight()-(joystickMiddle.getHeight()/2) +bulgaria_const)){
- 			p.y=(imgView.getHeight()+bulgaria_const)-(joystickMiddle.getHeight()/2);
+ 		if (eY>(joystick.getHeight()-(jMid.getHeight()/2)+bulgaria_const_Y)){
+ 			p.y=(joystick.getHeight()+bulgaria_const_Y)-(jMid.getHeight()/2);
  		}
  		return p;
 	}

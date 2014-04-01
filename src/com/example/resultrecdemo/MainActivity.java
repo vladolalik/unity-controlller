@@ -743,7 +743,8 @@ import android.widget.Toast;
 			// zmenit obrazok pri navigacii aby reprezentoval prave zvoleny typ ovladania
 			switch (itemPosition) {
 				case 1: break;
-				case 2: break;
+				case 2: actionBar.setIcon(R.drawable.circle_icon);
+						break;
 				case 3:	actionBar.setIcon(R.drawable.gamepad);
 						break;
 			}
@@ -770,6 +771,10 @@ import android.widget.Toast;
 			fr = new HomeFragment();
 			fr.setArguments(bundle);
 			break;
+		case 2:
+			fr = new JoystickFragment();
+			fr.setArguments(bundle);
+			break;	
 		default:
 			return;
 		}
