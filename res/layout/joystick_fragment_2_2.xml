@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextRotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/rotate"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:contentDescription="@string/joystick"
+        android:id="@+id/imgViewJoyStick"
+        android:layout_width="180sp"
+        android:layout_height="180sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/joystick" />
+
+    <ImageView
+        android:contentDescription="@string/joystick"
+        android:id="@+id/imageViewJoyStickMiddle"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/joystick_middle" />
+
+</RelativeLayout>

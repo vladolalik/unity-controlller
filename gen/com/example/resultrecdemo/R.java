@@ -56,43 +56,50 @@ public final class R {
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0008;
         public static final int TextRotate=0x7f0a0005;
-        public static final int action_change_server=0x7f0a0018;
-        public static final int action_connect=0x7f0a0017;
-        public static final int action_help=0x7f0a0019;
-        public static final int action_settings=0x7f0a001a;
+        public static final int action_button=0x7f0a0011;
+        public static final int action_button_1_2=0x7f0a0014;
+        public static final int action_change_server=0x7f0a001a;
+        public static final int action_connect=0x7f0a0019;
+        public static final int action_help=0x7f0a001b;
+        public static final int action_settings=0x7f0a001c;
         public static final int buttonMovBack=0x7f0a000b;
         public static final int buttonMovFV=0x7f0a000a;
         public static final int buttonMovLeft=0x7f0a000c;
         public static final int buttonMovRight=0x7f0a0009;
-        public static final int buttonRotDown=0x7f0a000f;
-        public static final int buttonRotLeft=0x7f0a000d;
+        public static final int buttonRotDown=0x7f0a000d;
+        public static final int buttonRotLeft=0x7f0a000e;
         public static final int buttonRotRight=0x7f0a0010;
-        public static final int buttonRotUP=0x7f0a000e;
+        public static final int buttonRotUP=0x7f0a000f;
         public static final int cancelButton=0x7f0a0006;
         public static final int dev_number=0x7f0a0002;
         public static final int fragment_container=0x7f0a0001;
-        public static final int imageViewJoyStickMiddle=0x7f0a0012;
-        public static final int imgIcon=0x7f0a0015;
-        public static final int imgViewJoyStick=0x7f0a0011;
-        public static final int imgViewJoystickMidMov=0x7f0a0014;
-        public static final int imgViewJoystickMov=0x7f0a0013;
+        public static final int imageViewJoyStickMiddle=0x7f0a0013;
+        public static final int imgIcon=0x7f0a0017;
+        public static final int imgViewJoyStick=0x7f0a0012;
+        public static final int imgViewJoystickMidMov=0x7f0a0016;
+        public static final int imgViewJoystickMov=0x7f0a0015;
         public static final int num_of_dev=0x7f0a0004;
         public static final int saveButton=0x7f0a0007;
         public static final int textMove=0x7f0a0003;
-        public static final int txtTitle=0x7f0a0016;
+        public static final int txtTitle=0x7f0a0018;
         public static final int txtview=0x7f0a0000;
     }
     public static final class integer {
+        public static final int MAX_VALUE_JOYSTICK_MOV=0x7f070001;
         public static final int PORT=0x7f070000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_settings=0x7f030001;
         public static final int gamepad_fragment=0x7f030002;
-        public static final int gamepad_fragment1=0x7f030003;
-        public static final int home_fragment=0x7f030004;
-        public static final int joystick_fragment=0x7f030005;
-        public static final int list_item_title_navigation=0x7f030006;
+        public static final int gamepad_fragment_1_1=0x7f030003;
+        public static final int gamepad_fragment_1_2=0x7f030004;
+        public static final int gamepad_fragment_2_2=0x7f030005;
+        public static final int home_fragment=0x7f030006;
+        public static final int joystick_fragment_1_1=0x7f030007;
+        public static final int joystick_fragment_1_2=0x7f030008;
+        public static final int joystick_fragment_2_2=0x7f030009;
+        public static final int list_item_title_navigation=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f090000;
@@ -107,10 +114,12 @@ public final class R {
         public static final int COUNT_OF_DEVICES=0x7f060011;
         public static final int DEV_NUMBER=0x7f06000c;
         public static final int IP_ADRESS=0x7f060020;
+        public static final int JOYSTICK_MV=0x7f060023;
         public static final int JOYSTICK_MV_BACK=0x7f06001d;
         public static final int JOYSTICK_MV_FV=0x7f06001c;
         public static final int JOYSTICK_MV_LEFT=0x7f06001a;
         public static final int JOYSTICK_MV_RIGHT=0x7f06001b;
+        public static final int JOYSTICK_ROTATE=0x7f060024;
         public static final int JOYSTICK_ROTATE_X=0x7f06001e;
         public static final int JOYSTICK_ROTATE_Y=0x7f06001f;
         public static final int MSG_DEV_NUMBER=0x7f06000d;
@@ -118,6 +127,7 @@ public final class R {
         public static final int SET_NUMBER_OF_DEVICES=0x7f06000e;
         public static final int TYPE_OF_CONTROL=0x7f060019;
         public static final int ac_connect=0x7f060006;
+        public static final int action_button=0x7f060021;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int cancel=0x7f06000b;
@@ -125,12 +135,14 @@ public final class R {
         public static final int count_of_device=0x7f060008;
         public static final int down=0x7f060015;
         public static final int hello_world=0x7f060002;
+        public static final int joystick=0x7f060025;
         public static final int left=0x7f060017;
         public static final int movement=0x7f060012;
         public static final int number_of_device=0x7f060007;
         public static final int right=0x7f060016;
         public static final int rotate=0x7f060013;
         public static final int saveOptions=0x7f06000a;
+        public static final int service_killed=0x7f060022;
         public static final int title_activity_settings=0x7f060009;
         public static final int up=0x7f060014;
     }

@@ -1,6 +1,8 @@
 package info.androidhive.info.actionbar.adapter;
  
-import com.example.resultrecdemo.*;
+import com.bachelor.unity_remote_control.*;
+import com.example.resultrecdemo.R;
+
 import info.androidhive.actionbar.model.SpinnerNavItem;
  
 import java.util.ArrayList;

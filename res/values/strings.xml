@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
 
     <item name="PORT" type="integer">4444</item>
+    <item name="MAX_VALUE_JOYSTICK_MOV" type="integer">10</item>
 
     <string name="CONNECT_TO_SERVER">ConnectToServer</string>
     <string name="CONNECT_ACCEPT">ConnectAccept</string>
@@ -37,4 +38,9 @@
 	<string name="JOYSTICK_ROTATE_X">RotateX</string>
 	<string name="JOYSTICK_ROTATE_Y">RotateY</string>
 	<string name="IP_ADRESS">ipadress</string>
+	<string name="action_button">Select</string>
+	<string name="service_killed">SERVICE_WAS_KILLED</string>
+	<string name="JOYSTICK_MV">MV</string>
+	<string name="JOYSTICK_ROTATE">ROTATE</string>
+	<string name="joystick">JOYSTICK</string>
 </resources>

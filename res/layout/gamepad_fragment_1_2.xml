@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/buttonMovRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonMovFV"
+                android:layout_toRightOf="@+id/buttonMovFV"
+                android:background="@drawable/effects_right_arrow" />
+
+            <Button
+                android:id="@+id/buttonMovBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonMovRight"
+                android:layout_toLeftOf="@+id/buttonMovRight"
+                android:layout_toRightOf="@+id/buttonMovLeft"
+                android:background="@drawable/effects_back_arrow" />
+
+            <TextView
+                android:id="@+id/textMove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/movement"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/buttonMovLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/buttonMovFV"
+                android:background="@drawable/effects_left_arrow" />
+
+            <Button
+                android:id="@+id/buttonMovFV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/buttonMovLeft"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/effects_fv_arrow" />
+
+            <Button
+                android:id="@+id/action_button_1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/action_button" />
+
+        </RelativeLayout>
+
+        
+
+    </LinearLayout>
+
+</RelativeLayout>
