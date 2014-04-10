@@ -2,6 +2,7 @@ package com.bachelor.networking;
 
 import com.bachelor.controllers.one_device.GamePadFragment_1_1;
 import com.bachelor.controllers.one_device.JoystickFragment_1_1;
+import com.bachelor.controllers.one_device.SteeringWheelFragment;
 import com.bachelor.controllers.two_devices.GamePadFragment_1_2;
 import com.bachelor.controllers.two_devices.GamePadFragment_2_2;
 import com.bachelor.controllers.two_devices.JoystickFragment_1_2;
@@ -81,6 +82,9 @@ public class ChangeFragment {
 			}
 			fr.setArguments(bundle);
 			break;	
+		case 4:
+			fr =new SteeringWheelFragment();
+			break;
 		default:
 			return;
 		}

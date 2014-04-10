@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+   	android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/steering_wheel" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+             android:layout_width="0dp"
+        	 android:layout_height="match_parent"
+      		 android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/intensity_left_invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15sp"
+                android:src="@drawable/intensity_1" 
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/intensity_left_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_left_invisible"
+                android:layout_alignLeft="@+id/intensity_left_invisible"
+                android:src="@drawable/intensity_1" />
+
+            <ImageView
+                android:id="@+id/intensity_left_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_left_invisible"
+                android:layout_marginRight="6sp"
+                android:layout_toLeftOf="@+id/intensity_left_invisible"
+                android:src="@drawable/intensity_2" />
+
+            <ImageView
+                android:id="@+id/intensity_left_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_left_invisible"
+                android:layout_marginRight="6sp"
+                android:layout_toLeftOf="@+id/intensity_left_2"
+                android:src="@drawable/intensity_3" />
+
+            <ImageView
+                android:id="@+id/intensity_left_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_left_invisible"
+                android:layout_marginRight="6sp"
+                android:layout_toLeftOf="@+id/intensity_left_3"
+                android:src="@drawable/intensity_4" />
+
+            <ImageView
+                android:id="@+id/intensity_left_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/intensity_left_4"
+                android:layout_marginRight="6sp"
+                android:layout_toLeftOf="@+id/intensity_left_4"
+                android:src="@drawable/intensity_5" />
+
+            <Button
+                android:id="@+id/brake_pedal"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/pedal_brake" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="0dp"
+        	android:layout_height="match_parent"
+      		android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/intensity_right_invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15sp"
+                android:src="@drawable/intensity_1" 
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/intensity_right_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/intensity_right_2"
+                android:layout_alignLeft="@+id/intensity_right_invisible"
+                android:src="@drawable/intensity_1" />
+
+            <ImageView
+                android:id="@+id/intensity_right_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_right_invisible"
+                android:layout_marginLeft="6sp"
+                android:layout_toRightOf="@+id/intensity_right_4"
+                android:src="@drawable/intensity_5" />
+
+            <ImageView
+                android:id="@+id/intensity_right_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_right_invisible"
+                android:layout_marginLeft="6sp"
+                android:layout_toRightOf="@+id/intensity_right_3"
+                android:src="@drawable/intensity_4" />
+
+            <ImageView
+                android:id="@+id/intensity_right_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_right_invisible"
+                android:layout_marginLeft="6sp"
+                android:layout_toRightOf="@+id/intensity_right_2"
+                android:src="@drawable/intensity_3" />
+
+            <ImageView
+                android:id="@+id/intensity_right_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/intensity_right_invisible"
+                android:layout_marginLeft="6sp"
+                android:layout_toRightOf="@+id/intensity_right_invisible"
+                android:src="@drawable/intensity_2" />
+
+            <Button
+                android:id="@+id/gas_pedal"
+                android:layout_width="40sp"
+                android:layout_height="80sp"
+                android:layout_marginRight="10sp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/pedal_gas"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

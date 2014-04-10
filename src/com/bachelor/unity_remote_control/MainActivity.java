@@ -26,6 +26,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -66,6 +68,7 @@ import com.example.resultrecdemo.R;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Log.d("MainActivity", "onCreate");
+		
 		// action bar
 		actionBar = getActionBar();
 

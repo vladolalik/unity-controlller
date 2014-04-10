@@ -43,4 +43,7 @@
 	<string name="JOYSTICK_MV">MV</string>
 	<string name="JOYSTICK_ROTATE">ROTATE</string>
 	<string name="joystick">JOYSTICK</string>
+	<string name="CAR_TURN">Turn</string>
+	<string name="CAR_GAS_PEDAL">GasPedal</string>
+	<string name="CAR_BRAKE_PEDAL">BrakePedal</string>
 </resources>
