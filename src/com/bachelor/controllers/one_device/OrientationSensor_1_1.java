@@ -143,7 +143,7 @@ public class OrientationSensor_1_1 extends Fragment {
 				//float rollAngle=event.values[2];
 				if (isAdded()){
 					if (Math.abs(pitchValue)>0.5){
-						sendMessage(getResources().getString(R.string.rotate) + " " + pitchValue);
+						sendMessage(getResources().getString(R.string.ROTATE) + " " + pitchValue);
 					} 
 					if (Math.abs(moveValue)>0.5){
 						sendMessage(getResources().getString(R.string.movement) + " " + moveValue);
