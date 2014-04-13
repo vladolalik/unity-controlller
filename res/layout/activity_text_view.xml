@@ -44,7 +44,7 @@
             tools:ignore="UselessParent" >
 
             <Button
-                android:id="@+id/escape_button"
+                android:id="@+id/escape_menu_button"
                 style="?buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

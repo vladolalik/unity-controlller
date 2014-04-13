@@ -48,7 +48,8 @@ import com.example.resultrecdemo.R;
 	public final Integer ACTION_SWITCH_ON_WIFI = 1;
 	final Integer SETTING_RESULT = 2;
 	final Integer TEXT_VIEW_ACTIVITY=3;
-	boolean text_view_activity_result=false;
+	final Integer MENU_VIEW_ACTIVITY=4;
+	boolean activity_result=false;
 	public final Integer NUM_OF_SERVER = 3;
 	public CharSequence[] aServerIP; // list of servers
 	// final String NUMBER_OF_DEVICES = "SetNoDev";
@@ -91,6 +92,8 @@ import com.example.resultrecdemo.R;
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[4],
 				R.drawable.gyroscope_icon));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[5],
+				R.drawable.gyroscope_icon));
+		navSpinner.add(new SpinnerNavItem(actionMenuItems[6],
 				R.drawable.gyroscope_icon));
 
 		// title drop down adapter
@@ -307,7 +310,24 @@ import com.example.resultrecdemo.R;
 				Log.d("active_fragment", String.valueOf(active_fragment));
 				changeControlFragment(active_fragment);
 				lastSelectedItemActionBar=active_fragment;
-				text_view_activity_result=true;
+				activity_result=true;
+			}
+		}
+		if (requestCode == MENU_VIEW_ACTIVITY){
+			if (resultCode == RESULT_OK){
+				int active_fragment=data.getIntExtra("active_fragment", 2);
+				String msg=data.getStringExtra(getResources().getString(R.string.CLIENT_SEND_MENU_ITEM));
+				sendMessage(getResources().getString(R.string.CLIENT_SEND_MENU_ITEM) + " " + msg);
+				Log.d("menu msg", getResources().getString(R.string.CLIENT_SEND_MENU_ITEM) + " " + msg);
+				changeControlFragment(active_fragment);
+				lastSelectedItemActionBar=active_fragment;
+				activity_result=true;
+			}
+			if (resultCode == RESULT_CANCELED){
+				int active_fragment=data.getIntExtra("active_fragment", 2);
+				changeControlFragment(active_fragment);
+				lastSelectedItemActionBar=active_fragment;
+				activity_result=true;
 			}
 		}
 
@@ -381,12 +401,12 @@ import com.example.resultrecdemo.R;
 				R.array.typesOfControl);
 		
 		// home screen moze byt zobrazeny aj bez schvalenia serverom
-		if (itemPosition==0 && !text_view_activity_result){
+		if (itemPosition==0 && !activity_result){
 			actionBar.setIcon(R.drawable.ic_action_dock);
 			changeControlFragment(0);
 			return true;
 		} else {
-			text_view_activity_result=false;
+			activity_result=false;
 		}
 		
 		

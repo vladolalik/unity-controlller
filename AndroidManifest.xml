@@ -44,6 +44,12 @@
             android:label="@string/title_activity_text_view"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="com.bachelor.unity_remote_control.MenuViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_menu_view"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>

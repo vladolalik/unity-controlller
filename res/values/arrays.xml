@@ -7,8 +7,9 @@
     <string-array name="action_list">
         <item>Home</item>
         <item>TouchPad</item>
-        <item>Circle</item>
-        <item>Gamepad</item>
+        <item>Joystick</item>
+        <item>GamepadConnectAccept with Joystick</item>
+        <item>Gamepad with Arrows</item>
         <item>Steering Wheel</item>
         <item>Orientation sensor</item>
     </string-array>
@@ -16,8 +17,9 @@
     <string-array name="typesOfControl">
         <item>HOME</item>
         <item>TOUCHPAD</item>
-        <item>CIRCLE</item>
         <item>JOYSTICK</item>
+        <item>GAMEPAD_JOYSTICK</item>
+        <item>GAMEPAD_ARROWS</item>
         <item>STEERING_WHEEL</item>
         <item>ORIENTATION_SENSOR</item>
     </string-array>

@@ -1,8 +1,12 @@
 package com.bachelor.networking;
 
+import com.bachelor.controllers.one_device.GamePadFragmentWithArrows_1_1;
+import com.bachelor.controllers.one_device.GamePadFragmentWithArrows_2_2;
 import com.bachelor.controllers.one_device.GamePadFragment_1_1;
 import com.bachelor.controllers.one_device.JoystickFragment_1_1;
 import com.bachelor.controllers.one_device.OrientationSensor_1_1;
+import com.bachelor.controllers.one_device.OrientationSensor_1_2;
+import com.bachelor.controllers.one_device.OrientationSensor_2_2;
 import com.bachelor.controllers.one_device.SteeringWheelFragment;
 import com.bachelor.controllers.two_devices.GamePadFragment_1_2;
 import com.bachelor.controllers.two_devices.GamePadFragment_2_2;
@@ -64,7 +68,7 @@ public class ChangeFragment {
 					fr = new JoystickFragment_2_2();
 				}
 			}
-			fr.setArguments(bundle);
+			//fr.setArguments(bundle);
 			break;	
 		case 3:
 			if (count_of_dev==1)
@@ -82,13 +86,43 @@ public class ChangeFragment {
 				}
 			}
 			
-			fr.setArguments(bundle);
+			//fr.setArguments(bundle);
 			break;
 		case 4:
+			if (count_of_dev==1)
+			{
+				if (my_number==1){
+					fr = new GamePadFragmentWithArrows_1_1();
+				} 
+			} 
+			else 
+			{
+				if (my_number==1){
+					fr = new GamePadFragment_1_2();
+				} else {
+					fr = new GamePadFragmentWithArrows_2_2();
+				}
+			}
+			
+
+		case 5:
 			fr =new SteeringWheelFragment();
 			break;
-		case 5:
-			fr=new OrientationSensor_1_1();
+		case 6:
+			if (count_of_dev==1)
+			{
+				if (my_number==1){
+					fr = new OrientationSensor_1_1();
+				} 
+			} 
+			else 
+			{
+				if (my_number==1){
+					fr = new OrientationSensor_1_2();
+				} else {
+					fr = new OrientationSensor_2_2();
+				}
+			}
 			break;
 		default:
 			return;

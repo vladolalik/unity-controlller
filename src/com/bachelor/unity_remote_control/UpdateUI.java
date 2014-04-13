@@ -84,9 +84,10 @@ class UpdateUI implements Runnable {
 			mainActivity.startService();
 		}
 		
-		// zobrazenie textViewActivity
+		
 		String[] aData=this.msgFromServer.split(";");
 		
+		// zobrazenie textViewActivity
 		if (aData[0]!=null && aData[0].equals(mainActivity.getResources().getString(R.string.TEXT_FROM_SERVER))){
 			if (aData[1]!=null){
 				Log.d("Before Start Text", aData[0]);
@@ -98,6 +99,20 @@ class UpdateUI implements Runnable {
 				mainActivity.startActivityForResult(i, mainActivity.TEXT_VIEW_ACTIVITY);
 			}
 		}
+		
+		//zobrazenie menu zo serveru
+		if (aData[0]!=null && aData[0].equals(mainActivity.getResources().getString(R.string.MENU_FROM_SERVER))){
+			if (aData[1]!=null){
+				Log.d("Before Start Menu", aData[0]);
+				Intent i = new Intent(mainActivity, MenuViewActivity.class);
+				Bundle b = new Bundle();
+				b.putString("text", this.msgFromServer);
+				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
+				i.putExtras(b);
+				mainActivity.startActivityForResult(i, mainActivity.MENU_VIEW_ACTIVITY);
+			}
+		}
+		
 	}
 
 	public void run() {

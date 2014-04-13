@@ -1,7 +1,5 @@
 package com.bachelor.controllers.one_device;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import com.bachelor.networking.SendMessage;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
@@ -9,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -24,7 +21,6 @@ import android.widget.ImageView;
 public class GamePadFragment_1_1 extends Fragment {
 
 	
-	InetAddress serverIP;
 	Vibrator vibrator;
 	ImageView imgView;
 	ImageView joystickMiddle;
@@ -34,23 +30,7 @@ public class GamePadFragment_1_1 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		try {
-			String ip = getArguments().getString(
-					getResources().getString(R.string.IP_ADRESS));
-			if (ip != null) {
-				ip = ip.replace("/", "");
-				Log.d("GAMEPAD ip", ip);
-				serverIP = InetAddress.getByName(ip);
-			}
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			Log.d("GAMEPAD", "bad format of ip");
-			e.printStackTrace();
-		} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
-			Log.d("GAMEPAD", "parameter ip not found");
-			e.printStackTrace();
-		}
+	
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
 				ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

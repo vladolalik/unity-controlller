@@ -54,6 +54,10 @@
     <string name="title_activity_text_view">TextViewActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="TEXT_FROM_SERVER">Text</string>
+    <string name="TEXT_FROM_SERVER">TEXT</string>
+    <string name="MENU_FROM_SERVER">MENU</string>
+    <string name="title_activity_menu_view">MenuViewActivity</string>
+    <string name="TEXT_MENU_SEPARATOR">;</string>
+    <string name="CLIENT_SEND_MENU_ITEM">ITEM</string>
 
 </resources>
