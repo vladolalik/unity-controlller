@@ -2,12 +2,10 @@ package com.bachelor.unity_remote_control;
 
 import info.androidhive.actionbar.model.SpinnerNavItem;
 import info.androidhive.info.actionbar.adapter.TitleNavigationAdapter;
-
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActivityManager;
@@ -30,7 +28,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.bachelor.networking.ChangeFragment;
 import com.bachelor.networking.GetServerIP;
 import com.bachelor.networking.MyService;
@@ -50,13 +47,15 @@ import com.example.resultrecdemo.R;
 	public DatagramSocket socket;
 	public final Integer ACTION_SWITCH_ON_WIFI = 1;
 	final Integer SETTING_RESULT = 2;
+	final Integer TEXT_VIEW_ACTIVITY=3;
+	boolean text_view_activity_result=false;
 	public final Integer NUM_OF_SERVER = 3;
 	public CharSequence[] aServerIP; // list of servers
 	// final String NUMBER_OF_DEVICES = "SetNoDev";
 	public SharedPreferences prefs;
 	// action bar
 	ActionBar actionBar;
-	public Integer lastSelectedItemActionBar;
+	public Integer lastSelectedItemActionBar=0;
 	boolean serverRequest = false;
 	// Title navigation Spinner data
 	private ArrayList<SpinnerNavItem> navSpinner;
@@ -90,6 +89,8 @@ import com.example.resultrecdemo.R;
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[3],
 				R.drawable.gamepad));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[4],
+				R.drawable.gyroscope_icon));
+		navSpinner.add(new SpinnerNavItem(actionMenuItems[5],
 				R.drawable.gyroscope_icon));
 
 		// title drop down adapter
@@ -243,7 +244,7 @@ import com.example.resultrecdemo.R;
 	protected void onRestart() {
 		super.onRestart();
 		Log.d("MainActivity", "onRestart");
-		changeControlFragment(0);
+		changeControlFragment(lastSelectedItemActionBar);
 	}
 	
 	
@@ -252,7 +253,9 @@ import com.example.resultrecdemo.R;
 		super.onResume();
 		//po navrate sa zobrazi home fragment
 		actionBar.setSelectedNavigationItem(0);
-		changeControlFragment(0);
+		Log.d("MainActivity", "onResume");
+		Log.d("lastItem", String.valueOf(lastSelectedItemActionBar));
+		changeControlFragment(lastSelectedItemActionBar);
 		if(serverIP!=null){
 			startService();
 		}
@@ -296,6 +299,15 @@ import com.example.resultrecdemo.R;
 						getResources().getString(R.string.COUNT_OF_DEVICES), 1);
 				sendMessage(getResources().getString(R.string.MSG_DEV_NUMBER)
 						+ " " + count_of_dev + " " + my_number);
+			}
+		}
+		if (requestCode == TEXT_VIEW_ACTIVITY){
+			if (resultCode == RESULT_OK){
+				int active_fragment=data.getIntExtra("active_fragment", 2);
+				Log.d("active_fragment", String.valueOf(active_fragment));
+				changeControlFragment(active_fragment);
+				lastSelectedItemActionBar=active_fragment;
+				text_view_activity_result=true;
 			}
 		}
 
@@ -369,10 +381,12 @@ import com.example.resultrecdemo.R;
 				R.array.typesOfControl);
 		
 		// home screen moze byt zobrazeny aj bez schvalenia serverom
-		if (itemPosition==0){
+		if (itemPosition==0 && !text_view_activity_result){
 			actionBar.setIcon(R.drawable.ic_action_dock);
 			changeControlFragment(0);
 			return true;
+		} else {
+			text_view_activity_result=false;
 		}
 		
 		

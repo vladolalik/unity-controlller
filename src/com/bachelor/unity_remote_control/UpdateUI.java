@@ -1,10 +1,12 @@
 package com.bachelor.unity_remote_control;
 
-import com.example.resultrecdemo.R;
-
+import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.resultrecdemo.R;
 
 
 /**
@@ -80,6 +82,21 @@ class UpdateUI implements Runnable {
 		//in case service which receive messages from server was killed
 		if (this.msgFromServer.equals(mainActivity.getResources().getString(R.string.service_killed))){
 			mainActivity.startService();
+		}
+		
+		// zobrazenie textViewActivity
+		String[] aData=this.msgFromServer.split(";");
+		
+		if (aData[0]!=null && aData[0].equals(mainActivity.getResources().getString(R.string.TEXT_FROM_SERVER))){
+			if (aData[1]!=null){
+				Log.d("Before Start Text", aData[0]);
+				Intent i = new Intent(mainActivity, TextViewActivity.class);
+				Bundle b = new Bundle();
+				b.putString("text", aData[1]);
+				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
+				i.putExtras(b);
+				mainActivity.startActivityForResult(i, mainActivity.TEXT_VIEW_ACTIVITY);
+			}
 		}
 	}
 

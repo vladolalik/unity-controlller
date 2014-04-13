@@ -21,8 +21,8 @@
         android:label="@string/app_name" >
         <activity
             android:name="com.bachelor.unity_remote_control.MainActivity"
-            android:label="@string/app_name" 
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +35,14 @@
 
         <activity
             android:name="com.bachelor.unity_remote_control.SettingsActivity"
-            android:label="@string/title_activity_settings" 
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.bachelor.unity_remote_control.TextViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_text_view"
+            android:theme="@style/FullscreenTheme" >
         </activity>
     </application>
 

@@ -2,6 +2,7 @@ package com.bachelor.networking;
 
 import com.bachelor.controllers.one_device.GamePadFragment_1_1;
 import com.bachelor.controllers.one_device.JoystickFragment_1_1;
+import com.bachelor.controllers.one_device.OrientationSensor_1_1;
 import com.bachelor.controllers.one_device.SteeringWheelFragment;
 import com.bachelor.controllers.two_devices.GamePadFragment_1_2;
 import com.bachelor.controllers.two_devices.GamePadFragment_2_2;
@@ -43,24 +44,7 @@ public class ChangeFragment {
 				mainActivity.getResources().getString(R.string.COUNT_OF_DEVICES), 1);
 		
 		switch (number) {
-		case 3:
-			if (count_of_dev==1)
-			{
-				if (my_number==1){
-					fr = new GamePadFragment_1_1();
-				} 
-			} 
-			else 
-			{
-				if (my_number==1){
-					fr = new GamePadFragment_1_2();
-				} else {
-					fr = new GamePadFragment_2_2();
-				}
-			}
-			
-			fr.setArguments(bundle);
-			break;
+		
 		case 0:
 			fr = new HomeFragment();
 			fr.setArguments(bundle);
@@ -82,8 +66,29 @@ public class ChangeFragment {
 			}
 			fr.setArguments(bundle);
 			break;	
+		case 3:
+			if (count_of_dev==1)
+			{
+				if (my_number==1){
+					fr = new GamePadFragment_1_1();
+				} 
+			} 
+			else 
+			{
+				if (my_number==1){
+					fr = new GamePadFragment_1_2();
+				} else {
+					fr = new GamePadFragment_2_2();
+				}
+			}
+			
+			fr.setArguments(bundle);
+			break;
 		case 4:
 			fr =new SteeringWheelFragment();
+			break;
+		case 5:
+			fr=new OrientationSensor_1_1();
 			break;
 		default:
 			return;
