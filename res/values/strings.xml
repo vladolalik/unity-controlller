@@ -58,5 +58,7 @@
     <string name="title_activity_menu_view">MenuViewActivity</string>
     <string name="TEXT_MENU_SEPARATOR">;</string>
     <string name="CLIENT_SEND_MENU_ITEM">ITEM</string>
+    <string name="ORIENTATION_ROTATE">TURN</string>
+    <string name="ORIENTATION_MOVE">MOVE</string>
 
 </resources>

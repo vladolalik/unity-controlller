@@ -143,10 +143,10 @@ public class OrientationSensor_1_1 extends Fragment {
 				//float rollAngle=event.values[2];
 				if (isAdded()){
 					if (Math.abs(pitchValue)>0.5){
-						sendMessage(getResources().getString(R.string.ROTATE) + " " + pitchValue);
+						sendMessage(getResources().getString(R.string.ORIENTATION_ROTATE) + " " + pitchValue);
 					} 
 					if (Math.abs(moveValue)>0.5){
-						sendMessage(getResources().getString(R.string.movement) + " " + moveValue);
+						sendMessage(getResources().getString(R.string.ORIENTATION_MOVE) + " " + moveValue);
 					}
 				} else {
 					Log.d("OrientationFragment", "not attached to activity");
