@@ -60,5 +60,6 @@
     <string name="CLIENT_SEND_MENU_ITEM">ITEM</string>
     <string name="ORIENTATION_ROTATE">TURN</string>
     <string name="ORIENTATION_MOVE">MOVE</string>
+    <string name="rotate">Rotate</string>
 
 </resources>
