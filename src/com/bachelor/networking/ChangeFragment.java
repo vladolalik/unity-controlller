@@ -103,7 +103,7 @@ public class ChangeFragment {
 					fr = new GamePadFragmentWithArrows_2_2();
 				}
 			}
-			
+			break;
 
 		case 5:
 			fr =new SteeringWheelFragment();
