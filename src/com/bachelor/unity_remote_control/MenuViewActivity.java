@@ -1,5 +1,8 @@
 package com.bachelor.unity_remote_control;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,8 +18,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.MyService;
+import com.bachelor.networking.SendMessageMenu;
 import com.example.resultrecdemo.R;
 import com.example.resultrecdemo.util.SystemUiHider;
 
@@ -54,17 +57,78 @@ public class MenuViewActivity extends Activity {
 	 * The instance of the {@link SystemUiHider} for this activity.
 	 */
 	private SystemUiHider mSystemUiHider;
-	private int mainActivityActiveFragment;
+	int mainActivityActiveFragment;
+	private InetAddress serverIP;
+	public final int TEXT_VIEW_ACTIVITY=1;
+	MenuResultReceiver resultReceiver;
+	Intent intent;
+	
+	public void startService() {
+		if (intent == null) {
+			Log.d("Intent", "Started");
+			resultReceiver = new MenuResultReceiver(null, this);
+			intent = new Intent(getApplicationContext(), MyService.class);
+			intent.putExtra("receiver", resultReceiver);
+			// intent.putExtra("serverIP", serverIP);
+			startService(intent);
+		}
+
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Log.d("onDestroyMenu", "executed");
+		serverIP = null;
+		if (intent != null) {
+		//	stopService(intent);
+		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		startService();
+	}
+	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		Log.d("menu", "onPause");
+		Intent returnIntent = new Intent();
+		returnIntent.putExtra("active_fragment",mainActivityActiveFragment);
+		setResult(RESULT_CANCELED,returnIntent);     
+		//finish();
+		
+		
+	}
+	
+	
+	/**
+	 * Funkcia ktora zachytava result zo SettingActivity
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == TEXT_VIEW_ACTIVITY){
+			if (resultCode == RESULT_OK){
+				Log.d("TEXT ACTIVITY", "BACK TO MENU");
+			}
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_menu_view);
-
+	
+		
+		
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
 		final View contentView = findViewById(R.id.fullscreen_content);
-
+		
 		// Set up an instance of SystemUiHider to control the system UI for
 		// this activity.
 		mSystemUiHider = SystemUiHider.getInstance(this, contentView,
@@ -141,6 +205,14 @@ public class MenuViewActivity extends Activity {
 		
 		Bundle b = getIntent().getExtras();
 		String textFromServer = b.getString("text");
+		String ip=b.getString("serverIP");
+		try {
+			
+			serverIP=InetAddress.getByName(ip.replace("/", ""));
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mainActivityActiveFragment=b.getInt("active_fragment");
 		String separator=getResources().getString(R.string.TEXT_MENU_SEPARATOR);
 		textFromServer=textFromServer.substring(textFromServer.indexOf(separator));
@@ -157,11 +229,13 @@ public class MenuViewActivity extends Activity {
 				// TODO Auto-generated method stub
 				Log.d("onItemClick", items[arg2] );
 				//sendMessage(getResources().getString(R.string.CLIENT_SEND_MENU_ITEM) + " " + items[arg2]);
-				Intent returnIntent = new Intent();
+				/*Intent returnIntent = new Intent();
 				returnIntent.putExtra("active_fragment",mainActivityActiveFragment);
 				returnIntent.putExtra(getResources().getString(R.string.CLIENT_SEND_MENU_ITEM),items[arg2]);
 				setResult(RESULT_OK,returnIntent);     
-				finish();
+				finish();*/
+				sendMessage(items[arg2]);
+				
 			}
 			
 		});
@@ -170,7 +244,7 @@ public class MenuViewActivity extends Activity {
 	}
 	
 	private void sendMessage(String msg){
-		//new SendMessage().execute(msg);
+		new SendMessageMenu(serverIP, getResources().getInteger(R.integer.PORT)).execute(msg);
 	}
 
 	@Override

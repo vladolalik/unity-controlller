@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -51,7 +51,7 @@ public class OrientationSensor_1_1 extends Fragment {
 		sm.registerListener(myAccelerometerListener, accSensor,
 				SensorManager.SENSOR_DELAY_GAME);
 		setIntensityArrays(view);
-		Button actionButon=(Button)view.findViewById(R.id.action_button);
+		Button actionButon=(Button)view.findViewById(R.id.action_button_orient);
 		actionButon.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -61,6 +61,11 @@ public class OrientationSensor_1_1 extends Fragment {
 			}
 		});
 		
+		Button mvFV=(Button) view.findViewById(R.id.buttonMovFV);
+		mvFV.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_FV), (MainActivity)getActivity()));
+		
+		Button mvBACK=(Button) view.findViewById(R.id.buttonMovBack);
+		mvBACK.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_BACK), (MainActivity)getActivity()));
 		return view;
 	}
 	
@@ -75,16 +80,6 @@ public class OrientationSensor_1_1 extends Fragment {
 		intensityRight[2]=(ImageView)view.findViewById(R.id.intensity_right_3);
 		intensityRight[3]=(ImageView)view.findViewById(R.id.intensity_right_4);
 		intensityRight[4]=(ImageView)view.findViewById(R.id.intensity_right_5);
-		intensityBack[0]=(ImageView)view.findViewById(R.id.intensity_back_1);
-		intensityBack[1]=(ImageView)view.findViewById(R.id.intensity_back_2);
-		intensityBack[2]=(ImageView)view.findViewById(R.id.intensity_back_3);
-		intensityBack[3]=(ImageView)view.findViewById(R.id.intensity_back_4);
-		intensityBack[4]=(ImageView)view.findViewById(R.id.intensity_back_5);
-		intensityForward[0]=(ImageView)view.findViewById(R.id.intensity_fw_1);
-		intensityForward[1]=(ImageView)view.findViewById(R.id.intensity_fw_2);
-		intensityForward[2]=(ImageView)view.findViewById(R.id.intensity_fw_3);
-		intensityForward[3]=(ImageView)view.findViewById(R.id.intensity_fw_4);
-		intensityForward[4]=(ImageView)view.findViewById(R.id.intensity_fw_5);
 	}
 	
 	@Override
@@ -112,13 +107,11 @@ public class OrientationSensor_1_1 extends Fragment {
 				
 				//float headingAngle=event.values[0];
 				float pitchValue=event.values[1];
-				float moveValue=event.values[0];
+				//float moveValue=event.values[0];
 				
 				for (int i=0; i<intensityLeft.length; i++){
 					intensityLeft[i].setVisibility(View.INVISIBLE);
 					intensityRight[i].setVisibility(View.INVISIBLE);
-					intensityBack[i].setVisibility(View.INVISIBLE);
-					intensityForward[i].setVisibility(View.INVISIBLE);
 					
 					if (pitchValue>0){
 						if (pitchValue>i*1.5+0.2){
@@ -130,24 +123,13 @@ public class OrientationSensor_1_1 extends Fragment {
 						}
 					}
 					
-					if (moveValue>0){
-						if (moveValue>i*1.5+0.2){
-							intensityBack[i].setVisibility(View.VISIBLE);
-						}
-					} else {	
-						if (Math.abs(moveValue)>i*1.5+0.2){
-							intensityForward[i].setVisibility(View.VISIBLE);
-						}
-					}
+				
 				}
-				//float rollAngle=event.values[2];
+				
 				if (isAdded()){
 					if (Math.abs(pitchValue)>0.5){
 						sendMessage(getResources().getString(R.string.ORIENTATION_ROTATE) + " " + pitchValue);
 					} 
-					if (Math.abs(moveValue)>0.5){
-						sendMessage(getResources().getString(R.string.ORIENTATION_MOVE) + " " + moveValue);
-					}
 				} else {
 					Log.d("OrientationFragment", "not attached to activity");
 				}
@@ -165,7 +147,7 @@ public class OrientationSensor_1_1 extends Fragment {
 	};
 	
 	private void sendMessage(String msg){
-		new SendMessage((MainActivity)getActivity()).execute(msg);
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
 	}
 
 	

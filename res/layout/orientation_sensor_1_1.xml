@@ -8,78 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:orientation="vertical" 
-        android:weightSum="3">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:id="@+id/intensity_fw_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20sp"
-                android:src="@drawable/intensity_vert_1" />
-
-            <Button
-                android:id="@+id/action_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/action_button" />
-
-            <ImageView
-                android:id="@+id/intensity_fw_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/intensity_fw_1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="6sp"
-                android:src="@drawable/intensity_vert_2" />
-
-            <ImageView
-                android:id="@+id/intensity_fw_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/intensity_fw_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="6sp"
-                android:src="@drawable/intensity_vert_3" />
-
-            <ImageView
-                android:id="@+id/intensity_fw_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/intensity_fw_3"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="6sp"
-                android:src="@drawable/intensity_vert_4" />
-
-            <ImageView
-                android:id="@+id/intensity_fw_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/intensity_fw_4"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="6sp"
-                android:src="@drawable/intensity_vert_5" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="28dp"
-                android:layout_toRightOf="@+id/intensity_fw_5"
-                android:text="@string/forward"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        </RelativeLayout>
+        android:orientation="vertical"
+        android:weightSum="3" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,7 +75,6 @@
                     android:layout_centerVertical="true"
                     android:text="@string/left"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -207,71 +136,33 @@
                     android:layout_centerVertical="true"
                     android:text="@string/right"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
-
             </RelativeLayout>
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:id="@+id/intensity_back_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/intensity_back_1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6sp"
-                android:src="@drawable/intensity_vert_2" />
-
-            <ImageView
-                android:id="@+id/intensity_back_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/intensity_back_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6sp"
-                android:src="@drawable/intensity_vert_3" />
-
-            <ImageView
-                android:id="@+id/intensity_back_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/intensity_back_3"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6sp"
-                android:src="@drawable/intensity_vert_4" />
-
-            <ImageView
-                android:id="@+id/intensity_back_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/intensity_back_4"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6sp"
-                android:src="@drawable/intensity_vert_5" />
-
-            <ImageView
-                android:id="@+id/intensity_back_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20sp"
-                android:src="@drawable/intensity_vert_1" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="27dp"
-                android:layout_toRightOf="@+id/intensity_back_5"
-                android:text="@string/back"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        </RelativeLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/action_button_orient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="left|center_vertical"
+        android:text="@string/action_button" />
+
+    <Button
+        android:id="@+id/buttonMovBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/effects_back_arrow" />
+
+    <Button
+        android:id="@+id/buttonMovFV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/effects_fv_arrow" />
 
 </RelativeLayout>

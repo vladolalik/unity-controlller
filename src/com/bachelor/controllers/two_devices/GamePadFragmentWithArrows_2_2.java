@@ -1,6 +1,6 @@
-package com.bachelor.controllers.one_device;
+package com.bachelor.controllers.two_devices;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 import android.app.Fragment;
@@ -78,7 +78,7 @@ public class GamePadFragmentWithArrows_2_2 extends Fragment{
 	   }
 	
 	public void sendMessage(String msg) {
-		new SendMessage((MainActivity)getActivity()).execute(msg);
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
 	}
 	
 	

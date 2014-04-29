@@ -24,14 +24,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 import com.bachelor.networking.ChangeFragment;
 import com.bachelor.networking.GetServerIP;
 import com.bachelor.networking.MyService;
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.networking.ServersDialogFragment;
 import com.example.resultrecdemo.R;
 
@@ -324,9 +322,13 @@ import com.example.resultrecdemo.R;
 				activity_result=true;
 			}
 			if (resultCode == RESULT_CANCELED){
-				int active_fragment=data.getIntExtra("active_fragment", 2);
-				changeControlFragment(active_fragment);
-				lastSelectedItemActionBar=active_fragment;
+				if (data!=null){
+					int active_fragment=data.getIntExtra("active_fragment", 2);
+					changeControlFragment(active_fragment);
+					lastSelectedItemActionBar=active_fragment;
+				} else {
+					lastSelectedItemActionBar=2;
+				}
 				activity_result=true;
 			}
 		}
@@ -377,7 +379,7 @@ import com.example.resultrecdemo.R;
 					"Please make connection with server", Toast.LENGTH_SHORT)
 					.show();
 		} else {
-			new SendMessage(this).execute(msg);
+			new SendMessageMain(this).execute(msg);
 			//asyncTsk.execute(msg);
 		}
 	}
@@ -441,6 +443,12 @@ import com.example.resultrecdemo.R;
 
 			case 4:
 				sendMessage(changeControl + " " + typeOfControls[4]);
+				break;
+			case 5:
+				sendMessage(changeControl + " " + typeOfControls[5]);
+				break;	
+			case 6:
+				sendMessage(changeControl + " " + typeOfControls[6]);
 				break;
 
 			default:

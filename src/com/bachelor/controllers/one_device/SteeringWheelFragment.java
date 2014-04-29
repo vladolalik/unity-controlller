@@ -10,15 +10,13 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -50,29 +48,15 @@ public class SteeringWheelFragment extends Fragment {
 				SensorManager.SENSOR_DELAY_GAME);
 		setIntensityArrays(view);
 		Button gas=(Button)view.findViewById(R.id.gas_pedal);
-		gas.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				if (event.getAction()==MotionEvent.ACTION_MOVE){
-					sendMessage(getResources().getString(R.string.CAR_GAS_PEDAL));
-				}
-				return true;
-			}
-		});
+		gas.setOnTouchListener(new ButtonHoldingOnTouchListener(
+				getResources().getString(R.string.CAR_GAS_PEDAL),
+				(MainActivity) getActivity()));
+		
 		Button brake=(Button)view.findViewById(R.id.brake_pedal);
-		brake.setOnTouchListener(new OnTouchListener() {
+		brake.setOnTouchListener(new ButtonHoldingOnTouchListener(
+				getResources().getString(R.string.CAR_BRAKE_PEDAL),
+				(MainActivity) getActivity()));
 			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				if (event.getAction()==MotionEvent.ACTION_MOVE){
-					sendMessage(getResources().getString(R.string.CAR_BRAKE_PEDAL));
-				}
-				return true;
-			}
-		});
 	
 		return view;
 	}
@@ -149,7 +133,7 @@ public class SteeringWheelFragment extends Fragment {
 	};
 	
 	private void sendMessage(String msg){
-		new SendMessage((MainActivity)getActivity()).execute(msg);
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
 	}
 
 	

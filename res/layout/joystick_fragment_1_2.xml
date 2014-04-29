@@ -32,4 +32,14 @@
         android:layout_centerVertical="true"
         android:src="@drawable/joystick_middle_mov" />
 
+    <Button
+        android:id="@+id/ac_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imgViewJoystickMidMov"
+        android:text="@string/action_button"
+        android:gravity="left|center_vertical"
+        android:textAlignment="center" />
+
 </RelativeLayout>

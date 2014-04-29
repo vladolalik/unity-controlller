@@ -31,12 +31,12 @@ public class MyService extends IntentService {
 		Log.d("START", "SERVICeE");
 		while (true) {
 			try {
-				if (socket == null) {
+				//if (socket == null) {
 					socket = new DatagramSocket(null);
 					socket.setReuseAddress(true);
 					socket.setBroadcast(true);
 					socket.bind(new InetSocketAddress(getResources().getInteger(R.integer.PORT)));
-				}
+				//}
 
 				// prijatie odpovede od servera
 

@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
+                android:gravity="left|center_vertical"
                 android:text="@string/action_button" />
 
         </RelativeLayout>

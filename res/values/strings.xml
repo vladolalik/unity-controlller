@@ -61,5 +61,6 @@
     <string name="ORIENTATION_ROTATE">TURN</string>
     <string name="ORIENTATION_MOVE">MOVE</string>
     <string name="rotate">Rotate</string>
+    <string name="title_activity_photo_view">PhotoViewActivity</string>
 
 </resources>

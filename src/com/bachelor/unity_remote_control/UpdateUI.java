@@ -107,6 +107,7 @@ class UpdateUI implements Runnable {
 				Intent i = new Intent(mainActivity, MenuViewActivity.class);
 				Bundle b = new Bundle();
 				b.putString("text", this.msgFromServer);
+				b.putString("serverIP", mainActivity.serverIP.toString());
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
 				mainActivity.startActivityForResult(i, mainActivity.MENU_VIEW_ACTIVITY);

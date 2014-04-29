@@ -1,10 +1,11 @@
 package com.bachelor.controllers.one_device;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
 import android.graphics.PointF;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +17,7 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 	ImageView backView, midView;
 	String msg;
 	MainActivity mainActivity;
+	private Handler mHandler;
 	
 	public MyOnTouchListener(ImageView backView, ImageView midView, String msg, MainActivity mainActivity){
 		this.backView=backView;
@@ -31,6 +33,19 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 		return true;
 	}
 	
+	  Runnable mAction = new Runnable() {
+	        @Override public void run() {
+	            System.out.println("Performing action...");
+	            Log.d("Click", "mvRight");
+	            sendMessage(msg + " "
+						+ String.valueOf(angle) + " "
+						+ String.valueOf(getMovementIntensity(backViewRadius, vMidToTouch)));
+
+	            mHandler.postDelayed(this, 10);
+	        }
+	    };
+	float angle, vMidToTouch, backViewRadius;
+	    
 	private void joystickMovement(MotionEvent event, ImageView backView, ImageView midView){
 		final int x = (int) event.getRawX();
 		final int y = (int) event.getRawY();
@@ -44,9 +59,9 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 		// bod v strede navrchu joysticku, podla ktoreho budem pocitat uhol
 		// natocenia
 		final PointF zeroPoint = new PointF(backView.getWidth() / 2, 0);
-		float backViewRadius = backView.getWidth() / 2;
+		backViewRadius = backView.getWidth() / 2;
 		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN: {
+		case MotionEvent.ACTION_DOWN: {	            
 			origX = midView.getLeft();
 			origY = midView.getTop();
 			_xDelta = (int) (x - midView.getTranslationX());
@@ -59,12 +74,12 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 			PointF touchPoint = new PointF(event.getX(), event.getY()); // suradnice
 																		// bodu
 																		// dotyku
-			float angle = getAngle(middlePoint, zeroPoint, touchPoint);
+			angle = getAngle(middlePoint, zeroPoint, touchPoint);
 			Log.d("Angle", String.valueOf(angle));
 
 			// vzdialenost bodu dotyku od stredu
 
-			float vMidToTouch = getDistanceTwoPoints(middlePoint, touchPoint);
+			vMidToTouch = getDistanceTwoPoints(middlePoint, touchPoint);
 			//float vMidToCircle = getDistanceTwoPoints(middlePoint, new PointF(midView.getX(), midView.getY()));
 			Log.d("Intensity", String.valueOf(vMidToTouch));
 			sendMessage(msg + " "
@@ -85,6 +100,9 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 			Log.d("joystick x y",
 					String.valueOf(midView.getX() + " x "
 							+ String.valueOf(midView.getY())));
+			if (mHandler != null) return;
+            mHandler = new Handler();
+            mHandler.postDelayed(mAction, 10);
 			break;
 		}
 
@@ -92,6 +110,10 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 			// vrati joystick spat do stredu
 			midView.setX(origX);
 			midView.setY(origY);
+			if (mHandler == null) return;
+            mHandler.removeCallbacks(mAction);
+            mHandler = null;
+            
 
 			break;
 		}
@@ -115,7 +137,7 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 	 * @param msg
 	 */
 	public void sendMessage(String msg) {
-		new SendMessage(mainActivity).execute(msg);
+		new SendMessageMain(mainActivity).execute(msg);
 	}
 	
 	private float getMovementIntensity(float joystickMax, float value){

@@ -13,8 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import com.bachelor.controllers.one_device.MyOnTouchListener;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -64,6 +67,20 @@ public class JoystickFragment_1_2 extends Fragment {
 		joystickMidMov = (ImageView) view
 				.findViewById(R.id.imgViewJoystickMidMov);
 		imgViewMov.setOnTouchListener(new MyOnTouchListener(imgViewMov, joystickMidMov, getActivity().getResources().getString(R.string.JOYSTICK_MV), (MainActivity)getActivity()));
+		Button action = (Button) view.findViewById(R.id.ac_button);
+		action.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.ACTION_MESSAGE));
+			}
+		});
 		return view;
 	}
+	
+	private void sendMessage(String msg){
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
+	}
+
 }

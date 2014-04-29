@@ -1,6 +1,6 @@
 package com.bachelor.controllers.two_devices;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -91,44 +91,23 @@ public class GamePadFragment_1_2 extends Fragment {
 				sendMessage(getResources().getString(R.string.JOYSTICK_MV_BACK));
 			}
 		});
+		
+		Button action = (Button) view.findViewById(R.id.action_button_1_2);
+		action.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.ACTION_MESSAGE));
+			}
+		});
 
 		return view;
 	}
 
 	public void sendMessage(String msg) {
-		new SendMessage((MainActivity)getActivity()).execute(msg);
-		/*AsyncTask<String, String, String> asyncTsk = new AsyncTask<String, String, String>() {
-
-			@SuppressWarnings("resource")
-			@Override
-			protected String doInBackground(String... params) {
-				// TODO Auto-generated method stub
-				Log.d("sending", params[0]);
-				DatagramSocket socket = null;
-				int port = getResources().getInteger(R.integer.PORT);
-				try {
-					socket = new DatagramSocket();
-					byte[] buf = params[0].getBytes();
-					DatagramPacket packet = new DatagramPacket(buf, buf.length,
-							serverIP, port);// getResources().getInteger(R.integer.PORT)
-					socket.send(packet);
-				} catch (SocketException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return null;
-			}
-		};
-		Log.d("send", msg);
-		if (serverIP == null) {
-			Toast.makeText(getActivity(), "Please make connection with server",
-					Toast.LENGTH_SHORT).show();
-		} else {
-			asyncTsk.execute(msg);
-		}*/
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
+		
 	}
 
 }

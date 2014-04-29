@@ -1,4 +1,4 @@
-package com.bachelor.controllers.one_device;
+package com.bachelor.controllers.two_devices;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bachelor.networking.SendMessage;
+import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -136,7 +136,7 @@ public class OrientationSensor_2_2 extends Fragment {
 	};
 	
 	private void sendMessage(String msg){
-		new SendMessage((MainActivity)getActivity()).execute(msg);
+		new SendMessageMain((MainActivity)getActivity()).execute(msg);
 	}
 
 	

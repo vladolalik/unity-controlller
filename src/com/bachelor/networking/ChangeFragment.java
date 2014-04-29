@@ -1,17 +1,17 @@
 package com.bachelor.networking;
 
 import com.bachelor.controllers.one_device.GamePadFragmentWithArrows_1_1;
-import com.bachelor.controllers.one_device.GamePadFragmentWithArrows_2_2;
 import com.bachelor.controllers.one_device.GamePadFragment_1_1;
 import com.bachelor.controllers.one_device.JoystickFragment_1_1;
 import com.bachelor.controllers.one_device.OrientationSensor_1_1;
-import com.bachelor.controllers.one_device.OrientationSensor_1_2;
-import com.bachelor.controllers.one_device.OrientationSensor_2_2;
 import com.bachelor.controllers.one_device.SteeringWheelFragment;
+import com.bachelor.controllers.two_devices.GamePadFragmentWithArrows_2_2;
 import com.bachelor.controllers.two_devices.GamePadFragment_1_2;
 import com.bachelor.controllers.two_devices.GamePadFragment_2_2;
 import com.bachelor.controllers.two_devices.JoystickFragment_1_2;
 import com.bachelor.controllers.two_devices.JoystickFragment_2_2;
+import com.bachelor.controllers.two_devices.OrientationSensor_1_2;
+import com.bachelor.controllers.two_devices.OrientationSensor_2_2;
 import com.bachelor.unity_remote_control.HomeFragment;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;

@@ -30,12 +30,15 @@
     <ListView
         android:id="@+id/menu_listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
+        android:layout_height="match_parent"
+        android:layout_marginTop="40sp"
+        android:layout_marginBottom="40sp"
         android:gravity="center"
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
         android:textSize="20sp"
-        android:textStyle="bold">
+        android:textStyle="bold" >
+
     </ListView>
 
     <FrameLayout

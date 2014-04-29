@@ -4,18 +4,17 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class SendMessage extends AsyncTask<String, String, String> {
+public class SendMessageMain extends AsyncTask<String, String, String> {
 
 	MainActivity mainActivity;
 		
-	public SendMessage(MainActivity mainActivity){
+	public SendMessageMain(MainActivity mainActivity){
 		this.mainActivity=mainActivity;
 	}
 		
@@ -26,6 +25,7 @@ public class SendMessage extends AsyncTask<String, String, String> {
 			// TODO Auto-generated method stub
 			Log.d("sending", params[0]);
 			DatagramSocket socket = null;
+			
 			int port = mainActivity.getResources().getInteger(R.integer.PORT);
 			try {
 				socket = new DatagramSocket();
