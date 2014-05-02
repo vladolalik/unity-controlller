@@ -58,53 +58,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
 
-        <Button
-            android:id="@+id/buttonRotDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonRotLeft"
-            android:layout_marginTop="21dp"
-            android:gravity="left|center_vertical"
-            android:layout_toRightOf="@+id/buttonRotLeft"
-            android:text="@string/down" />
-
         <TextView
             android:id="@+id/TextRotate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:gravity="left|center_vertical"
             android:text="@string/rotate"
-            android:gravity="left|center_vertical"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <Button
-            android:id="@+id/buttonRotUP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TextRotate"
-            android:layout_toLeftOf="@+id/buttonRotRight"
-            android:gravity="left|center_vertical"
-            android:text="@string/up" />
-
-        <Button
-            android:id="@+id/buttonRotLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/buttonRotUP"
-            android:gravity="left|center_vertical"
-            android:text="@string/left" />
-
-        <Button
-            android:id="@+id/buttonRotRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/buttonRotDown"
-            android:gravity="left|center_vertical"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="19dp"
-            android:text="@string/right" />
 
         <Button
             android:id="@+id/action_button"
@@ -114,6 +76,51 @@
             android:layout_centerHorizontal="true"
             android:gravity="left|center_vertical"
             android:text="@string/action_button" />
+
+        <Button
+            android:id="@+id/quit_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/quit" />
+
+        <Button
+            android:id="@+id/buttonRotRight"
+            android:layout_width="80sp"
+            android:layout_height="40sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/effects_rot_right"
+            android:gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/buttonRotLeft"
+            android:layout_width="80sp"
+            android:layout_height="40sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/buttonRotDown"
+            android:background="@drawable/effects_rot_left"
+            android:gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/buttonRotUP"
+            android:layout_width="40sp"
+            android:layout_height="80sp"
+            android:layout_above="@+id/buttonRotRight"
+            android:layout_toLeftOf="@+id/buttonRotRight"
+            android:background="@drawable/effects_rot_up"
+            android:gravity="left|center_vertical" />
+
+        <Button
+            android:id="@+id/buttonRotDown"
+            android:layout_width="40sp"
+            android:layout_height="80sp"
+            android:layout_below="@+id/buttonRotRight"
+            android:layout_toLeftOf="@+id/buttonRotRight"
+            android:background="@drawable/effects_rot_down"
+            android:gravity="left|center_vertical" />
 
     </RelativeLayout>
 

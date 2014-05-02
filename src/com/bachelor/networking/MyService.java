@@ -40,7 +40,7 @@ public class MyService extends IntentService {
 
 				// prijatie odpovede od servera
 
-				byte[] buf = new byte[1024];
+				byte[] buf = new byte[4096];
 				DatagramPacket receivePacket = new DatagramPacket(buf,
 						buf.length);
 				socket.receive(receivePacket);

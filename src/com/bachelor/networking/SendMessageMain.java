@@ -24,11 +24,12 @@ public class SendMessageMain extends AsyncTask<String, String, String> {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			Log.d("sending", params[0]);
+			Log.d("ServerIP when sending", mainActivity.serverIP.toString());
 			DatagramSocket socket = null;
 			
 			int port = mainActivity.getResources().getInteger(R.integer.PORT);
 			try {
-				socket = new DatagramSocket();
+				socket = new DatagramSocket(null);
 				byte[] buf = params[0].getBytes("UTF-8");
 				DatagramPacket packet = new DatagramPacket(buf, buf.length,
 						mainActivity.serverIP, port);

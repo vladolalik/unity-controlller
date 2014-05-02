@@ -68,13 +68,14 @@
                     android:src="@drawable/intensity_5" />
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/introduce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="@string/left"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -138,16 +139,8 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/action_button_orient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="left|center_vertical"
-        android:text="@string/action_button" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonMovBack"
@@ -164,5 +157,24 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:background="@drawable/effects_fv_arrow" />
+
+    <Button
+        android:id="@+id/action_button_orient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="116dp"
+        android:layout_toRightOf="@+id/buttonMovFV"
+        android:gravity="left|center_vertical"
+        android:text="@string/action_button" />
+
+    <Button
+        android:id="@+id/quit_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/action_button_orient"
+        android:layout_weight="1"
+        android:text="@string/quit" />
 
 </RelativeLayout>

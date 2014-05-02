@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.bachelor.networking.DataStorage;
 import com.example.resultrecdemo.R;
 
 
@@ -34,7 +35,8 @@ class UpdateUIMenu implements Runnable {
 				Log.d("Before Start Text", aData[0]);
 				Intent i = new Intent(menuActivity, TextViewActivity.class);
 				Bundle b = new Bundle();
-				b.putString("text", aData[1]);
+				//b.putString("text", aData[1]);
+				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
 				b.putInt("active_fragment", menuActivity.mainActivityActiveFragment);
 				i.putExtras(b);
 				menuActivity.startActivityForResult(i, menuActivity.TEXT_VIEW_ACTIVITY);

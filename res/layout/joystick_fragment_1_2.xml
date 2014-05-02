@@ -33,13 +33,21 @@
         android:src="@drawable/joystick_middle_mov" />
 
     <Button
+        android:id="@+id/quit_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/quit" />
+
+    <Button
         android:id="@+id/ac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/imgViewJoystickMidMov"
-        android:text="@string/action_button"
+        android:layout_centerHorizontal="true"
         android:gravity="left|center_vertical"
+        android:text="@string/action_button"
         android:textAlignment="center" />
 
 </RelativeLayout>

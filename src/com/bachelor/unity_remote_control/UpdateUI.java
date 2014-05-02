@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bachelor.networking.DataStorage;
 import com.example.resultrecdemo.R;
 
 
@@ -93,7 +94,8 @@ class UpdateUI implements Runnable {
 				Log.d("Before Start Text", aData[0]);
 				Intent i = new Intent(mainActivity, TextViewActivity.class);
 				Bundle b = new Bundle();
-				b.putString("text", aData[1]);
+				//b.putString("text", aData[1]);
+				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
 				mainActivity.startActivityForResult(i, mainActivity.TEXT_VIEW_ACTIVITY);

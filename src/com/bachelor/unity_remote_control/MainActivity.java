@@ -10,7 +10,6 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -110,6 +109,8 @@ import com.example.resultrecdemo.R;
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
 		//addDynamicFragment(); // add frament
+		
+		
 
 	}
 
@@ -480,15 +481,7 @@ import com.example.resultrecdemo.R;
 		
 	}
 
-	private void addDynamicFragment() {
-		// TODO Auto-generated method stub
-		// creating instance of the HelloWorldFragment.
-		Fragment fg = new HomeFragment();
 
-		// adding fragment to relative layout by using layout id
-		getFragmentManager().beginTransaction()
-				.add(R.id.fragment_container, fg).commit();
-	}
 
 /*	protected void setOrientation() {
 		int current = getRequestedOrientation();

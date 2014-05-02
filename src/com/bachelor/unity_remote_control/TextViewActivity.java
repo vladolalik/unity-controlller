@@ -1,7 +1,5 @@
 package com.bachelor.unity_remote_control;
 
-import java.security.acl.LastOwnerException;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -10,12 +8,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bachelor.networking.DataStorage;
 import com.example.resultrecdemo.R;
 import com.example.resultrecdemo.util.SystemUiHider;
 
@@ -141,11 +141,27 @@ public class TextViewActivity extends Activity {
 		});
 		
 		Bundle b = getIntent().getExtras();
-		String textFromServer = b.getString("text");
+		DataStorage data=(DataStorage) getIntent().getSerializableExtra("DataStorage");// = b.getString("text");
+		String textFromServer=data.getText();
+		Log.d("text_text", textFromServer);
+		textFromServer=deleteTags(textFromServer);
 		mainActivityActiveFragment=b.getInt("active_fragment");
 		TextView txtView=(TextView)findViewById(R.id.fullscreen_content);
 		txtView.setMovementMethod(new ScrollingMovementMethod());
 		txtView.setText(textFromServer);
+	}
+	
+	private String deleteTags(String text){
+		Log.d("first_TEXT", text);
+		while (text.contains("<")){
+			int first=text.indexOf("<");
+			int last=text.indexOf(">");
+			String sub=text.substring(first, last+1);
+			Log.d("TEXT",sub);
+			text=text.replaceAll(sub, "");
+			Log.d("TEXT",text);
+		}
+		return text;
 	}
 
 	@Override

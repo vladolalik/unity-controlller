@@ -62,5 +62,8 @@
     <string name="ORIENTATION_MOVE">MOVE</string>
     <string name="rotate">Rotate</string>
     <string name="title_activity_photo_view">PhotoViewActivity</string>
+    <string name="introduction">First, make connection with server and then select type of control which you want to use (in the menu above).</string>
+    <string name="MSG_QUIT">QUIT</string>
+    <string name="quit">Quit</string>
 
 </resources>

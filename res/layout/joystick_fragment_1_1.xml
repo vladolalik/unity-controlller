@@ -57,6 +57,14 @@
                 android:gravity="left|center_vertical"
                 android:text="@string/action_button" />
 
+            <Button
+                android:id="@+id/quit_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/quit" />
+
         </RelativeLayout>
 
         <RelativeLayout
