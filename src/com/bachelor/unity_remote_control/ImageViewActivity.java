@@ -1,14 +1,27 @@
-package com.example.resultrecdemo;
+package com.bachelor.unity_remote_control;
 
-import com.example.resultrecdemo.util.SystemUiHider;
+import java.io.File;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.bachelor.networking.DataStorage;
+import com.bachelor.networking.ImageStorage;
+import com.example.resultrecdemo.R;
+import com.example.resultrecdemo.util.SystemUiHider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -16,7 +29,7 @@ import android.view.View;
  * 
  * @see SystemUiHider
  */
-public class PhotoViewActivity extends Activity {
+public class ImageViewActivity extends Activity {
 	/**
 	 * Whether or not the system UI should be auto-hidden after
 	 * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -45,11 +58,12 @@ public class PhotoViewActivity extends Activity {
 	 */
 	private SystemUiHider mSystemUiHider;
 
+	private int mainActivityActiveFragment=1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_photo_view);
+		setContentView(R.layout.activity_image_view);
 
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
 		final View contentView = findViewById(R.id.fullscreen_content);
@@ -114,9 +128,42 @@ public class PhotoViewActivity extends Activity {
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
-		findViewById(R.id.dummy_button).setOnTouchListener(
+		findViewById(R.id.escape_btn_img).setOnTouchListener(
 				mDelayHideTouchListener);
+		
+		
+		File imgFile = new  File(Environment.getExternalStorageDirectory()+"/unity-controller/", "photo.jpg");
+		if(imgFile.exists()){
+			Log.d("imageView", "img");
+		    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+		    ImageView myImage = (ImageView) findViewById(R.id.imageView_Act);
+		    myImage.setImageBitmap(myBitmap);
+
+		}
+		
+		Bundle b = getIntent().getExtras();
+		mainActivityActiveFragment=b.getInt("active_fragment");
+		
+		Button escapeButton = (Button)findViewById(R.id.escape_btn_img);
+		escapeButton.setOnTouchListener(
+				mDelayHideTouchListener);
+		escapeButton.setOnClickListener(new OnClickListener() {
+		
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				//TextViewActivity.this.setResult(RESULT_OK);
+				Intent returnIntent = new Intent();
+				returnIntent.putExtra("active_fragment",mainActivityActiveFragment);
+				setResult(RESULT_OK,returnIntent);     
+				finish();
+			}
+		});
 	}
+	
+	
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {

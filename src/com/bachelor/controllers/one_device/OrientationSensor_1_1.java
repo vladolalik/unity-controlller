@@ -66,6 +66,17 @@ public class OrientationSensor_1_1 extends Fragment {
 		
 		Button mvBACK=(Button) view.findViewById(R.id.buttonMovBack);
 		mvBACK.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_BACK), (MainActivity)getActivity()));
+		
+		Button quit=(Button)view.findViewById(R.id.quit_5);
+		quit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.MSG_QUIT));
+			}
+		});
+
 		return view;
 	}
 	

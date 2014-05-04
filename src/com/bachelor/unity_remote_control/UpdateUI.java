@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bachelor.networking.DataStorage;
+import com.bachelor.networking.ImageStorage;
 import com.example.resultrecdemo.R;
 
 
@@ -87,7 +88,7 @@ class UpdateUI implements Runnable {
 		
 		
 		String[] aData=this.msgFromServer.split(";");
-		
+		Log.d("UPDATEUI",aData[0]);
 		// zobrazenie textViewActivity
 		if (aData[0]!=null && aData[0].equals(mainActivity.getResources().getString(R.string.TEXT_FROM_SERVER))){
 			if (aData[1]!=null){
@@ -114,6 +115,15 @@ class UpdateUI implements Runnable {
 				i.putExtras(b);
 				mainActivity.startActivityForResult(i, mainActivity.MENU_VIEW_ACTIVITY);
 			}
+		}
+		
+		if (this.msgFromServer.equals(mainActivity.getResources().getString(R.string.IMG_SERVER))){
+				
+				Intent i = new Intent(mainActivity, ImageViewActivity.class);
+				Bundle b = new Bundle();
+				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
+				i.putExtras(b);
+				mainActivity.startActivityForResult(i, mainActivity.IMAGE_VIEW_ACTIVITY);
 		}
 		
 	}

@@ -14,7 +14,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView_Act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
             android:id="@+id/connect_button12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
+            android:layout_below="@+id/imageView_Act"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp"
             android:text="@string/ac_connect" />

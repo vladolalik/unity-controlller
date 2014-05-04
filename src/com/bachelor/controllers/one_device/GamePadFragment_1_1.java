@@ -62,6 +62,16 @@ public class GamePadFragment_1_1 extends Fragment {
 				sendMessage(getResources().getString(R.string.ACTION_MESSAGE));
 			}
 		});
+		
+		Button quit=(Button)view.findViewById(R.id.quit);
+		quit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.MSG_QUIT));
+			}
+		});
 
 		imgView = (ImageView) view.findViewById(R.id.imgViewJoyStick);
 		joystickMiddle = (ImageView) view

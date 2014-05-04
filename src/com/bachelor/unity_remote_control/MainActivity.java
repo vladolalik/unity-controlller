@@ -46,6 +46,7 @@ import com.example.resultrecdemo.R;
 	final Integer SETTING_RESULT = 2;
 	final Integer TEXT_VIEW_ACTIVITY=3;
 	final Integer MENU_VIEW_ACTIVITY=4;
+	final Integer IMAGE_VIEW_ACTIVITY=5;
 	boolean activity_result=false;
 	public final Integer NUM_OF_SERVER = 3;
 	public CharSequence[] aServerIP; // list of servers
@@ -332,6 +333,17 @@ import com.example.resultrecdemo.R;
 				}
 				activity_result=true;
 			}
+		}
+		
+		if (requestCode == IMAGE_VIEW_ACTIVITY){
+			if (data!=null){
+				int active_fragment=data.getIntExtra("active_fragment", 2);
+				changeControlFragment(active_fragment);
+				lastSelectedItemActionBar=active_fragment;
+			} else {
+				lastSelectedItemActionBar=2;
+			}
+			activity_result=true;
 		}
 
 	}

@@ -1,5 +1,7 @@
 package com.bachelor.networking;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
@@ -10,7 +12,9 @@ import com.example.resultrecdemo.R;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.ResultReceiver;
 import android.util.Log;
 
@@ -39,11 +43,18 @@ public class MyService extends IntentService {
 				//}
 
 				// prijatie odpovede od servera
-
-				byte[] buf = new byte[4096];
+				byte[] buf = new byte[65535];
 				DatagramPacket receivePacket = new DatagramPacket(buf,
 						buf.length);
 				socket.receive(receivePacket);
+				byte[] flag=new byte[3];
+				
+				System.arraycopy(buf, 0, flag, 0, 3);
+				if (new String(flag).equals("IMG")){
+					byte[] imgData=new byte[65535];
+					System.arraycopy(buf, 3, imgData, 0, buf.length-3);
+					new SavePhotoTask().execute(imgData);
+				}
 				String sentence = new String(receivePacket.getData()).trim();
 				
 				Log.d("Message", sentence.trim());
@@ -58,7 +69,31 @@ public class MyService extends IntentService {
 				e.printStackTrace();
 			}
 		}
-		
+	}
+	
+	class SavePhotoTask extends AsyncTask<byte[], String, String> {
+	    @Override
+	    protected String doInBackground(byte[]... jpeg) {
+	      File dir= new File(Environment.getExternalStorageDirectory()+"/unity-controller/");
+	      dir.mkdirs();
+	      File photo=new File(dir, "photo.jpg");
+	      Log.d("photo", photo.getAbsolutePath());
+	      if (photo.exists()) {
+	            photo.delete();
+	      }
+
+	      try {
+	        FileOutputStream fos=new FileOutputStream(photo.getPath());
+
+	        fos.write(jpeg[0]);
+	        fos.close();
+	      }
+	      catch (java.io.IOException e) {
+	        Log.e("PictureDemo", "Exception in photoCallback", e);
+	      }
+
+	      return(null);
+	    }
 	}
 
 	@Override

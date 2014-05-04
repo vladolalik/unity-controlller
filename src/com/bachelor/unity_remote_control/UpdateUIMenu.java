@@ -1,10 +1,15 @@
 package com.bachelor.unity_remote_control;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.bachelor.networking.DataStorage;
+import com.bachelor.networking.ImageStorage;
 import com.example.resultrecdemo.R;
 
 
@@ -28,7 +33,7 @@ class UpdateUIMenu implements Runnable {
 		this.menuActivity=menuActivity;
 		
 		String[] aData=this.msgFromServer.split(";");
-		
+		Log.d("UPDATEMENU",aData[0]);
 		// zobrazenie textViewActivity
 		if (aData[0]!=null && aData[0].equals(menuActivity.getResources().getString(R.string.TEXT_FROM_SERVER))){
 			if (aData[1]!=null){
@@ -43,8 +48,13 @@ class UpdateUIMenu implements Runnable {
 			}
 		}
 		
-		if (msgFromServer.equals(menuActivity.getResources().getString(R.string.TEXT_FROM_SERVER))){
+		if (this.msgFromServer.equals(menuActivity.getResources().getString(R.string.IMG_SERVER))){
 			
+			Intent i = new Intent(menuActivity, ImageViewActivity.class);
+			Bundle b = new Bundle();
+			b.putInt("active_fragment", menuActivity.mainActivityActiveFragment);
+			i.putExtras(b);
+			menuActivity.startActivityForResult(i, menuActivity.IMAGE_VIEW_ACTIVITY);
 		}
 	}
 

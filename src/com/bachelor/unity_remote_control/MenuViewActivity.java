@@ -59,7 +59,7 @@ public class MenuViewActivity extends Activity {
 	private SystemUiHider mSystemUiHider;
 	int mainActivityActiveFragment;
 	private InetAddress serverIP;
-	public final int TEXT_VIEW_ACTIVITY=1;
+	public final int TEXT_VIEW_ACTIVITY=1, IMAGE_VIEW_ACTIVITY=5;
 	MenuResultReceiver resultReceiver;
 	Intent intent;
 	
@@ -116,6 +116,10 @@ public class MenuViewActivity extends Activity {
 				Log.d("TEXT ACTIVITY", "BACK TO MENU");
 			}
 		}
+		if (requestCode == IMAGE_VIEW_ACTIVITY){
+			Log.d("IMAGE ACTIVITY", "BACK TO MENU");
+		}
+		
 	}
 	
 	@Override

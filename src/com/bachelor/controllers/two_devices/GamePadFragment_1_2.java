@@ -101,6 +101,17 @@ public class GamePadFragment_1_2 extends Fragment {
 				sendMessage(getResources().getString(R.string.ACTION_MESSAGE));
 			}
 		});
+		
+		Button quit=(Button)view.findViewById(R.id.quit_1);
+		quit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.MSG_QUIT));
+			}
+		});
+
 
 		return view;
 	}

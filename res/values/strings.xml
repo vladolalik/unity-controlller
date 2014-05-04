@@ -65,5 +65,8 @@
     <string name="introduction">First, make connection with server and then select type of control which you want to use (in the menu above).</string>
     <string name="MSG_QUIT">QUIT</string>
     <string name="quit">Quit</string>
+    <string name="SELECT">SELECT</string>
+    <string name="IMG_SERVER">IMAGE</string>
+    <string name="title_activity_image_view">ImageViewActivity</string>
 
 </resources>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context=".PhotoViewActivity" >
+    tools:context=".ImageViewActivity" >
 
     <!--
          The primary full-screen view. This can be replaced with whatever view
@@ -11,10 +11,11 @@
          TextureView, etc.
     -->
 
-    <Gallery
-        android:id="@+id/gallery1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/imageView_Act"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo" />
 
     <TextView
         android:id="@+id/fullscreen_content"
@@ -22,7 +23,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="@string/dummy_content"
         android:textColor="#33b5e5"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -53,8 +53,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/dummy_button" />
+                android:text="@string/back" />
         </LinearLayout>
+
     </FrameLayout>
 
 </FrameLayout>
