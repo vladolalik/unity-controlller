@@ -67,6 +67,15 @@
                 android:text="@string/left"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
+            <Button
+                android:id="@+id/action_button_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:gravity="left|center_vertical"
+                android:text="@string/action_button" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -129,17 +138,16 @@
                 android:text="@string/right"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
+            <Button
+                android:id="@+id/quit_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text="@string/quit" />
+
         </RelativeLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/action_button_or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="left|center_vertical"
-        android:text="@string/action_button" />
 
 </RelativeLayout>

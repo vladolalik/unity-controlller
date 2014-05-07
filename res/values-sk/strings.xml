@@ -2,35 +2,35 @@
 <resources>
 
     <string name="app_name">Unity Controller</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Nastavenia</string>
     <string name="hello_world">Hello world!</string>
-  	
+
     <item name="PORT" type="integer">4444</item>
     <item name="MAX_VALUE_JOYSTICK_MOV" type="integer">10</item>
 
-    <string name="help">Help</string>
+    <string name="help">Pomoc</string>
     <string name="CONNECT_TO_SERVER">ConnectToServer</string>
     <string name="CONNECT_ACCEPT">ConnectAccept</string>
     <string name="CONNECT_DECLINE">ConnectDecline</string>
-    <string name="ac_connect">Connect to Server</string>
-    <string name="number_of_device">Device number</string>
-    <string name="count_of_device">Count of devices</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="saveOptions">Send request to Server</string>
-    <string name="cancel">Cancel</string>
+    <string name="ac_connect">Pripojiť k serveru</string>
+    <string name="number_of_device">Číslo zariadenia</string>
+    <string name="count_of_device">Počet zariadení</string>
+    <string name="title_activity_settings">Nastavenia</string>
+    <string name="saveOptions">Pošli požiadavku serveru</string>
+    <string name="cancel">Späť</string>
     <string name="DEV_NUMBER">DEVICE_NUMBER</string>
     <string name="MSG_DEV_NUMBER">ChangeNoClient</string>
     <string name="SET_NUMBER_OF_DEVICES">SetNoDev</string>
-    <string name="SELECT_SERVER">Select Server</string>
-    <string name="changeServer">Change Server</string>
+    <string name="SELECT_SERVER">Vyber server</string>
+    <string name="changeServer">Zmenit server</string>
     <string name="COUNT_OF_DEVICES">CountOfDev</string>
-    <string name="movement">Movement</string>
-    <string name="up">Up</string>
-    <string name="down">Down</string>
-    <string name="right">Right</string>
-    <string name="left">Left</string>
-    <string name="back">Back</string>
-    <string name="forward">Forward</string>
+    <string name="movement">Pohyb</string>
+    <string name="up">Hore</string>
+    <string name="down">Dole</string>
+    <string name="right">Vpravo</string>
+    <string name="left">Vľavo</string>
+    <string name="back">Späť</string>
+    <string name="forward">Do predu</string>
     <string name="CHANGE_CONTROL">ChangeControl</string>
     <string name="TYPE_OF_CONTROL">	TypeOfControl</string>
     <string name="JOYSTICK_MV_LEFT">MVLeft</string>
@@ -40,7 +40,7 @@
     <string name="JOYSTICK_ROTATE_X">RotateX</string>
     <string name="JOYSTICK_ROTATE_Y">RotateY</string>
     <string name="IP_ADRESS">ipadress</string>
-    <string name="action_button">Select</string>
+    <string name="action_button">Výber</string>
     <string name="service_killed">SERVICE_WAS_KILLED</string>
     <string name="JOYSTICK_MV">MV</string>
     <string name="JOYSTICK_ROTATE">ROTATE</string>
@@ -51,7 +51,7 @@
     <string name="ORIENTATION_SENSOR_ROTATE">OrientRotate</string>
     <string name="ORIENTATION_SENSOR_MOVE">OrientMove</string>
     <string name="ACTION_MESSAGE">ActionButton</string>
-    <string name="title_activity_text_view">TextViewActivity</string>
+    <string name="title_activity_text_view">Texty</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="TEXT_FROM_SERVER">TEXT</string>
@@ -61,14 +61,14 @@
     <string name="CLIENT_SEND_MENU_ITEM">ITEM</string>
     <string name="ORIENTATION_ROTATE">TURN</string>
     <string name="ORIENTATION_MOVE">MOVE</string>
-    <string name="rotate">Rotate</string>
+    <string name="rotate">Rotácia</string>
+    <string name="ROTATE_MSG">Rotate</string>
     <string name="title_activity_photo_view">PhotoViewActivity</string>
-    <string name="introduction">First, make connection with server and then select type of control which you want to use (in the menu above).</string>
+    <string name="introduction">Ako prvé musíte vytvoriť spojenie so serverom a potom zvoliť typ ovládania, ktorý chcete používať.</string>
     <string name="MSG_QUIT">QUIT</string>
-    <string name="quit">Quit</string>
+    <string name="quit">Späť</string>
     <string name="SELECT">SELECT</string>
     <string name="IMG_SERVER">IMAGE</string>
     <string name="title_activity_image_view">ImageViewActivity</string>
-  
 
 </resources>

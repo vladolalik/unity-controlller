@@ -21,9 +21,9 @@ import com.example.resultrecdemo.R;
 
 public class JoystickFragment_2_2 extends Fragment {
 
-	DatagramSocket socket;
-	InetAddress serverIP;
-	Vibrator vibrator;
+	//DatagramSocket socket;
+	//InetAddress serverIP;
+	//Vibrator vibrator;
 	ImageView imgView;
 	ImageView joystickMiddle;
 	float dx, dy, _xDelta, _yDelta;
@@ -35,7 +35,7 @@ public class JoystickFragment_2_2 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		try {
+		/*try {
 			String ip = getArguments().getString(
 					getResources().getString(R.string.IP_ADRESS));
 			if (ip != null) {
@@ -51,14 +51,14 @@ public class JoystickFragment_2_2 extends Fragment {
 			// TODO Auto-generated catch block
 			Log.d("GAMEPAD", "parameter ip not found");
 			e.printStackTrace();
-		}
+		}*/
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
 				ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		View view = inflater.inflate(R.layout.joystick_fragment_2_2, container,
 				false);
-		vibrator = (Vibrator) getActivity().getSystemService(
-				Context.VIBRATOR_SERVICE);
+		/*vibrator = (Vibrator) getActivity().getSystemService(
+				Context.VIBRATOR_SERVICE);*/
 
 		imgView = (ImageView) view.findViewById(R.id.imgViewJoyStick);
 		joystickMiddle = (ImageView) view

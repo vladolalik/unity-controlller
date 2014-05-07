@@ -24,7 +24,7 @@ public class GamePadFragmentWithArrows_2_2 extends Fragment{
 		
 	       //Inflate the layout for this fragment
 		 getActivity().setRequestedOrientation(
-		            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		            ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		 View view = inflater.inflate(R.layout.gamepad_fragment_arrows_2_2, container, false);
 
 		 

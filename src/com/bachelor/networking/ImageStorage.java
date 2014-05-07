@@ -8,13 +8,19 @@ public class ImageStorage implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4211896143527956950L;
-	byte[] data;
+	boolean run;
 	
-	public ImageStorage(byte[] data){
-		this.data=data;
+	public ImageStorage(boolean run){
+		this.run=run;
 	}
 	
-	public byte[] getData(){
-		return data;
+	public boolean getData(){
+		return run;
 	}
+	
+	public void setData(boolean run){
+		this.run=run;
+	}
+	
+	
 }

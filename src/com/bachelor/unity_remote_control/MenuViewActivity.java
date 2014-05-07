@@ -18,6 +18,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.bachelor.networking.ImageStorage;
 import com.bachelor.networking.MyService;
 import com.bachelor.networking.SendMessageMenu;
 import com.example.resultrecdemo.R;
@@ -62,6 +64,7 @@ public class MenuViewActivity extends Activity {
 	public final int TEXT_VIEW_ACTIVITY=1, IMAGE_VIEW_ACTIVITY=5;
 	MenuResultReceiver resultReceiver;
 	Intent intent;
+	ImageStorage semafor;
 	
 	public void startService() {
 		if (intent == null) {
@@ -69,32 +72,40 @@ public class MenuViewActivity extends Activity {
 			resultReceiver = new MenuResultReceiver(null, this);
 			intent = new Intent(getApplicationContext(), MyService.class);
 			intent.putExtra("receiver", resultReceiver);
-			// intent.putExtra("serverIP", serverIP);
 			startService(intent);
 		}
 
 	}
 	
+
+	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.d("onDestroyMenu", "executed");
-		serverIP = null;
-		if (intent != null) {
-		//	stopService(intent);
+		if (this.intent!=null){
+			stopService(this.intent);
+			intent=null;
 		}
+		serverIP = null;
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		startService();
+		//startService();
 	}
 	
 	@Override
 	protected void onPause(){
-		super.onPause();
+		
+		if (this.intent!=null){
+			stopService(this.intent);
+			intent=null;
+		}
+		intent=null;
 		Log.d("menu", "onPause");
+		super.onPause();
 		Intent returnIntent = new Intent();
 		returnIntent.putExtra("active_fragment",mainActivityActiveFragment);
 		setResult(RESULT_CANCELED,returnIntent);     

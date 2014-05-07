@@ -25,7 +25,7 @@ import com.example.resultrecdemo.R;
 public class JoystickFragment_1_2 extends Fragment {
 
 	DatagramSocket socket;
-	InetAddress serverIP;
+	//InetAddress serverIP;
 	Vibrator vibrator;
 	ImageView imgViewMov;
 	ImageView joystickMidMov;
@@ -38,7 +38,7 @@ public class JoystickFragment_1_2 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		try {
+		/*try {
 			String ip = getArguments().getString(
 					getResources().getString(R.string.IP_ADRESS));
 			if (ip != null) {
@@ -54,7 +54,7 @@ public class JoystickFragment_1_2 extends Fragment {
 			// TODO Auto-generated catch block
 			Log.d("GAMEPAD", "parameter ip not found");
 			e.printStackTrace();
-		}
+		}*/
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
 				ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);

@@ -83,7 +83,7 @@ class UpdateUI implements Runnable {
 		
 		//in case service which receive messages from server was killed
 		if (this.msgFromServer.equals(mainActivity.getResources().getString(R.string.service_killed))){
-			mainActivity.startService();
+			mainActivity.startServiceMy();
 		}
 		
 		
@@ -99,6 +99,7 @@ class UpdateUI implements Runnable {
 				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
+				//mainActivity.stopService(mainActivity.intent);
 				mainActivity.startActivityForResult(i, mainActivity.TEXT_VIEW_ACTIVITY);
 			}
 		}
@@ -113,16 +114,17 @@ class UpdateUI implements Runnable {
 				b.putString("serverIP", mainActivity.serverIP.toString());
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
+				//mainActivity.stopService(mainActivity.intent);
 				mainActivity.startActivityForResult(i, mainActivity.MENU_VIEW_ACTIVITY);
 			}
 		}
 		
-		if (this.msgFromServer.equals(mainActivity.getResources().getString(R.string.IMG_SERVER))){
-				
+		if (this.msgFromServer.equals(mainActivity.getResources().getString(R.string.IMG_SERVER))){	
 				Intent i = new Intent(mainActivity, ImageViewActivity.class);
 				Bundle b = new Bundle();
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
+				//mainActivity.stopService(mainActivity.intent);
 				mainActivity.startActivityForResult(i, mainActivity.IMAGE_VIEW_ACTIVITY);
 		}
 		

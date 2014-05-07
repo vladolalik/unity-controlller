@@ -13,7 +13,7 @@ import android.os.ResultReceiver;
 	 */
 	class MyResultReceiver extends ResultReceiver {
 		
-		MainActivity mainActivity;
+		public MainActivity mainActivity;
 		
 		public MyResultReceiver(Handler handler, MainActivity mainActivity) {
 			super(handler);

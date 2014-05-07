@@ -14,13 +14,13 @@
      
     <!-- Help -->
     <item android:id="@+id/action_help"
-          android:title="help"
+          android:title="@string/help"
           android:showAsAction="never"/>
      
     <!-- Set my number (1,2) if there are more clients  -->
     <item android:id="@+id/action_settings"
           android:icon="@drawable/ic_action_refresh"
-          android:title="Settings"
+          android:title="@string/action_settings"
           android:showAsAction="never" />
     
 </menu>

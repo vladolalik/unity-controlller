@@ -36,7 +36,7 @@ public class OrientationSensor_2_2 extends Fragment {
 
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
-				ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+				ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		View view = inflater.inflate(R.layout.orientation_2_2, container,
 				false);
 		sm = (SensorManager) getActivity().getSystemService(
@@ -49,7 +49,7 @@ public class OrientationSensor_2_2 extends Fragment {
 		sm.registerListener(myAccelerometerListener, accSensor,
 				SensorManager.SENSOR_DELAY_GAME);
 		setIntensityArrays(view);
-		Button actionButon=(Button)view.findViewById(R.id.action_button);
+		Button actionButon=(Button)view.findViewById(R.id.action_button_or);
 		actionButon.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -58,6 +58,18 @@ public class OrientationSensor_2_2 extends Fragment {
 				sendMessage(getResources().getString(R.string.ACTION_MESSAGE));
 			}
 		});
+		
+		Button quit=(Button)view.findViewById(R.id.quit_6);
+		quit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				sendMessage(getResources().getString(R.string.MSG_QUIT));
+			}
+		});
+
+
 		
 		return view;
 	}
@@ -117,7 +129,7 @@ public class OrientationSensor_2_2 extends Fragment {
 				//float rollAngle=event.values[2];
 				if (isAdded()){
 					if (Math.abs(pitchValue)>0.5){
-						sendMessage(getResources().getString(R.string.rotate) + " " + pitchValue);
+						sendMessage(getResources().getString(R.string.ROTATE_MSG) + " " + pitchValue);
 					} 
 				} else {
 					Log.d("OrientationFragment", "not attached to activity");

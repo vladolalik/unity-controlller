@@ -81,7 +81,7 @@ public class GetServerIP {
 				mainActivity.showNoticeDialog(mainActivity.aServerIP);
 			}
 			if (mainActivity.serverIP != null) {
-				mainActivity.startService();
+				mainActivity.startServiceMy();
 			}
 
 		}

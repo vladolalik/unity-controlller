@@ -6,17 +6,19 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
-import java.util.Timer;
-
-import com.example.resultrecdemo.R;
 
 import android.app.IntentService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.ResultReceiver;
 import android.util.Log;
+
+import com.example.resultrecdemo.R;
 
 public class MyService extends IntentService {
 
@@ -25,16 +27,28 @@ public class MyService extends IntentService {
 		// TODO Auto-generated constructor stub
 	}
 
-	Timer timer = new Timer();
+	//Timer timer = new Timer();
 	// MyTimerTask timerTask;
 	ResultReceiver resultReceiver;
 	DatagramSocket socket;
 
+	public boolean run=true;
+	public class StopReceiver extends BroadcastReceiver {
 
+		   public static final String ACTION_STOP = "stop";
+
+		   @Override
+		   public void onReceive(Context context, Intent intent) {
+		       run = false;
+		       Log.d("STOP RECIEVE", "STAHP");
+		   }
+	}
+	
 	public void receiveMessg() {
 		Log.d("START", "SERVICeE");
-		while (true) {
+		while (run) {
 			try {
+			
 				//if (socket == null) {
 					socket = new DatagramSocket(null);
 					socket.setReuseAddress(true);
@@ -69,6 +83,9 @@ public class MyService extends IntentService {
 				e.printStackTrace();
 			}
 		}
+	     unregisterReceiver(receiver);
+	     stopSelf();
+	   
 	}
 	
 	class SavePhotoTask extends AsyncTask<byte[], String, String> {
@@ -102,6 +119,7 @@ public class MyService extends IntentService {
 		
 	}
 
+	StopReceiver receiver;
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		// TODO Auto-generated method stub
@@ -118,6 +136,16 @@ public class MyService extends IntentService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		IntentFilter filter = new IntentFilter(StopReceiver.ACTION_STOP);
+	    filter.addCategory(Intent.CATEGORY_DEFAULT);
+		receiver = new StopReceiver();
+	    registerReceiver(receiver, filter);
+
+	    // Do stuff ....
+
+	    //In the work you are doing
+	   
 		receiveMessg();
 	}
 

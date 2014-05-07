@@ -2,10 +2,12 @@ package com.bachelor.unity_remote_control;
 
 import info.androidhive.actionbar.model.SpinnerNavItem;
 import info.androidhive.info.actionbar.adapter.TitleNavigationAdapter;
+
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActivityManager;
@@ -25,9 +27,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.bachelor.networking.ChangeFragment;
 import com.bachelor.networking.GetServerIP;
 import com.bachelor.networking.MyService;
+import com.bachelor.networking.MyService.StopReceiver;
 import com.bachelor.networking.SendMessageMain;
 import com.bachelor.networking.ServersDialogFragment;
 import com.example.resultrecdemo.R;
@@ -36,6 +40,7 @@ import com.example.resultrecdemo.R;
 		ActionBar.OnNavigationListener, OnClickListener,
 		ServersDialogFragment.NoticeDialogListener {
 
+	public boolean stopService=false;
 	Intent intent;
 	MyResultReceiver resultReceiver;
 	public InetAddress serverIP;
@@ -130,7 +135,9 @@ import com.example.resultrecdemo.R;
 	@Override
 	public void onDialogItemClick(DialogFragment dialog, int id) {
 		// User touched the dialog's positive button
-		startService();
+		if (intent==null){
+			startServiceMy();
+		}
 		Log.d("Dialog", "Positive button");
 		if (serverIP != null) {
 			try {
@@ -197,9 +204,12 @@ import com.example.resultrecdemo.R;
 		case R.id.action_change_server:
 			Log.d("ACTION", "Change server");
 			// serverIP = null;
-			if (intent != null) {
+			/*if (intent != null) {
 				stopService(intent);
-			}
+			}*/
+			Intent sIntent = new Intent();
+			sIntent.setAction(StopReceiver.ACTION_STOP);
+			sendBroadcast(sIntent);
 			intent = null;
 			getServerIP();
 			return true;
@@ -212,14 +222,15 @@ import com.example.resultrecdemo.R;
 	 * Spustenie servisu, ktory bezi na samostanom vlakne a spracovava spravy od
 	 * serveru
 	 */
-	public void startService() {
+	public void startServiceMy() {
 		if (intent == null) {
-			Log.d("Intent", "Started");
-			resultReceiver = new MyResultReceiver(null, this);
-			intent = new Intent(getApplicationContext(), MyService.class);
-			intent.putExtra("receiver", resultReceiver);
-			// intent.putExtra("serverIP", serverIP);
-			startService(intent);
+			if (!isMyServiceRunning()){
+				Log.d("Intent", "Started");
+				resultReceiver = new MyResultReceiver(null, this);
+				intent = new Intent(getApplicationContext(), MyService.class);
+				intent.putExtra("receiver", resultReceiver);
+				startService(intent);
+			}
 		}
 
 	}
@@ -260,7 +271,10 @@ import com.example.resultrecdemo.R;
 		Log.d("lastItem", String.valueOf(lastSelectedItemActionBar));
 		changeControlFragment(lastSelectedItemActionBar);
 		if(serverIP!=null){
-			startService();
+			if (!isMyServiceRunning()){
+				Log.d("MAIN_RES", "START SERVICE");
+				startServiceMy();
+			}
 		}
 	}
 	
@@ -270,10 +284,15 @@ import com.example.resultrecdemo.R;
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.d("onDestroy", "executed");
+		/*stopService=true;
 		serverIP = null;
 		if (intent != null) {
 			stopService(intent);
-		}
+			intent=null;
+		}*/
+		Intent sIntent = new Intent();
+		sIntent.setAction(StopReceiver.ACTION_STOP);
+		sendBroadcast(sIntent);
 	}
 
 
@@ -331,7 +350,6 @@ import com.example.resultrecdemo.R;
 				} else {
 					lastSelectedItemActionBar=2;
 				}
-				activity_result=true;
 			}
 		}
 		
