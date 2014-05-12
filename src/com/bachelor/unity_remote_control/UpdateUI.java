@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.bachelor.networking.DataStorage;
 import com.bachelor.networking.ImageStorage;
+import com.bachelor.networking.MyService.StopReceiver;
 import com.example.resultrecdemo.R;
 
 
@@ -99,7 +100,11 @@ class UpdateUI implements Runnable {
 				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
-				//mainActivity.stopService(mainActivity.intent);
+				 /*stop receiving service */
+				Intent sIntent = new Intent();
+				sIntent.setAction(StopReceiver.ACTION_STOP);
+				mainActivity.sendBroadcast(sIntent);
+				/* */
 				mainActivity.startActivityForResult(i, mainActivity.TEXT_VIEW_ACTIVITY);
 			}
 		}
@@ -114,7 +119,11 @@ class UpdateUI implements Runnable {
 				b.putString("serverIP", mainActivity.serverIP.toString());
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
-				//mainActivity.stopService(mainActivity.intent);
+			    /*stop receiving service */
+				Intent sIntent = new Intent();
+				sIntent.setAction(StopReceiver.ACTION_STOP);
+				mainActivity.sendBroadcast(sIntent);
+				/* */
 				mainActivity.startActivityForResult(i, mainActivity.MENU_VIEW_ACTIVITY);
 			}
 		}
@@ -124,8 +133,25 @@ class UpdateUI implements Runnable {
 				Bundle b = new Bundle();
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
-				//mainActivity.stopService(mainActivity.intent);
+				 /*stop receiving service */
+				Intent sIntent = new Intent();
+				sIntent.setAction(StopReceiver.ACTION_STOP);
+				mainActivity.sendBroadcast(sIntent);
+				/* */
 				mainActivity.startActivityForResult(i, mainActivity.IMAGE_VIEW_ACTIVITY);
+		}
+		
+		aData=this.msgFromServer.split(" ");
+		if (aData[0].equals(mainActivity.getResources().getString(R.string.MAP))){
+			if (aData[1]!=null && aData[2]!=null){
+				Intent i = new Intent(mainActivity, MapViewActivity.class);
+				Bundle b = new Bundle();
+				b.putInt("x", Integer.parseInt(aData[1]));
+				b.putInt("y", Integer.parseInt(aData[2]));
+				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
+				i.putExtras(b);
+				mainActivity.startActivityForResult(i, mainActivity.MAP_VIEW_ACTIVITY);
+			}
 		}
 		
 	}

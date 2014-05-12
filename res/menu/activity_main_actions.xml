@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">  
     
+    
+    <!-- Map -->
+    <item android:id="@+id/action_map"
+          android:title="@string/map_txt"
+          android:icon="@drawable/map_marker"
+          android:showAsAction="ifRoom"/>
+    
     <!-- Action Connect to Server -->
     <item android:id="@+id/action_connect"
           android:icon="@drawable/hardware_server_uncon"
@@ -11,12 +18,7 @@
           android:icon="@drawable/ic_action_refresh"
           android:title="@string/changeServer"
           android:showAsAction="ifRoom" />
-     
-    <!-- Help -->
-    <item android:id="@+id/action_help"
-          android:title="@string/help"
-          android:showAsAction="never"/>
-     
+      
     <!-- Set my number (1,2) if there are more clients  -->
     <item android:id="@+id/action_settings"
           android:icon="@drawable/ic_action_refresh"

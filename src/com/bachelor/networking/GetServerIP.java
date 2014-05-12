@@ -202,6 +202,7 @@ public class GetServerIP {
 			}
 			addresses = addresses.substring(1);
 			Log.d("ADRESY", addresses);
+			mainActivity.socket.close();
 			return addresses;
 
 		}

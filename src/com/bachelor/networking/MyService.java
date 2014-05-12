@@ -48,18 +48,17 @@ public class MyService extends IntentService {
 		Log.d("START", "SERVICeE");
 		while (run) {
 			try {
-			
-				//if (socket == null) {
+				if (socket == null) {
 					socket = new DatagramSocket(null);
 					socket.setReuseAddress(true);
 					socket.setBroadcast(true);
 					socket.bind(new InetSocketAddress(getResources().getInteger(R.integer.PORT)));
-				//}
-
+				}
 				// prijatie odpovede od servera
 				byte[] buf = new byte[65535];
 				DatagramPacket receivePacket = new DatagramPacket(buf,
 						buf.length);
+				socket.setSoTimeout(50);
 				socket.receive(receivePacket);
 				byte[] flag=new byte[3];
 				
@@ -78,12 +77,14 @@ public class MyService extends IntentService {
 				bundle.putString("msg", sentence);
 				resultReceiver.send(10, bundle);
 				Log.d("MSG SERVER", sentence);
+				//socket.close();
 			} catch (Exception e) {
-				Log.d("SERVICE", "exception");
-				e.printStackTrace();
+				//Log.d("SERVICE", "exception");
+				//e.printStackTrace();
 			}
 		}
 	     unregisterReceiver(receiver);
+	     Log.d("MyService", "STAHP");
 	     stopSelf();
 	   
 	}

@@ -22,6 +22,7 @@ import android.widget.ListView;
 import com.bachelor.networking.ImageStorage;
 import com.bachelor.networking.MyService;
 import com.bachelor.networking.SendMessageMenu;
+import com.bachelor.networking.MyService.StopReceiver;
 import com.example.resultrecdemo.R;
 import com.example.resultrecdemo.util.SystemUiHider;
 
@@ -83,26 +84,21 @@ public class MenuViewActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.d("onDestroyMenu", "executed");
-		if (this.intent!=null){
-			stopService(this.intent);
-			intent=null;
-		}
 		serverIP = null;
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		//startService();
+		startService();
 	}
 	
 	@Override
 	protected void onPause(){
 		
-		if (this.intent!=null){
-			stopService(this.intent);
-			intent=null;
-		}
+		Intent sIntent = new Intent();
+		sIntent.setAction(StopReceiver.ACTION_STOP);
+		sendBroadcast(sIntent);
 		intent=null;
 		Log.d("menu", "onPause");
 		super.onPause();

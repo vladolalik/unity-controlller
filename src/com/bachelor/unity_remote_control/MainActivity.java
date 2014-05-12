@@ -52,6 +52,7 @@ import com.example.resultrecdemo.R;
 	final Integer TEXT_VIEW_ACTIVITY=3;
 	final Integer MENU_VIEW_ACTIVITY=4;
 	final Integer IMAGE_VIEW_ACTIVITY=5;
+	final Integer MAP_VIEW_ACTIVITY=6;
 	boolean activity_result=false;
 	public final Integer NUM_OF_SERVER = 3;
 	public CharSequence[] aServerIP; // list of servers
@@ -186,6 +187,11 @@ import com.example.resultrecdemo.R;
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Take appropriate action for each action item click
 		switch (item.getItemId()) {
+		
+		case R.id.action_map:
+			sendMessage(getResources().getString(R.string.MAP));
+			Log.d("klik", "map");
+			return true;
 		// pripojenie k serveru prvy krat
 		case R.id.action_connect:
 			if (serverIP == null)
@@ -223,7 +229,7 @@ import com.example.resultrecdemo.R;
 	 * serveru
 	 */
 	public void startServiceMy() {
-		if (intent == null) {
+	
 			if (!isMyServiceRunning()){
 				Log.d("Intent", "Started");
 				resultReceiver = new MyResultReceiver(null, this);
@@ -231,8 +237,6 @@ import com.example.resultrecdemo.R;
 				intent.putExtra("receiver", resultReceiver);
 				startService(intent);
 			}
-		}
-
 	}
 	
 	private boolean isMyServiceRunning() {
@@ -271,10 +275,8 @@ import com.example.resultrecdemo.R;
 		Log.d("lastItem", String.valueOf(lastSelectedItemActionBar));
 		changeControlFragment(lastSelectedItemActionBar);
 		if(serverIP!=null){
-			if (!isMyServiceRunning()){
 				Log.d("MAIN_RES", "START SERVICE");
 				startServiceMy();
-			}
 		}
 	}
 	
@@ -284,12 +286,7 @@ import com.example.resultrecdemo.R;
 	protected void onDestroy() {
 		super.onDestroy();
 		Log.d("onDestroy", "executed");
-		/*stopService=true;
-		serverIP = null;
-		if (intent != null) {
-			stopService(intent);
-			intent=null;
-		}*/
+		
 		Intent sIntent = new Intent();
 		sIntent.setAction(StopReceiver.ACTION_STOP);
 		sendBroadcast(sIntent);
@@ -347,6 +344,8 @@ import com.example.resultrecdemo.R;
 					int active_fragment=data.getIntExtra("active_fragment", 2);
 					changeControlFragment(active_fragment);
 					lastSelectedItemActionBar=active_fragment;
+					activity_result=true;
+					Log.d("MENUVIEW", "RESULT");
 				} else {
 					lastSelectedItemActionBar=2;
 				}
@@ -358,6 +357,19 @@ import com.example.resultrecdemo.R;
 				int active_fragment=data.getIntExtra("active_fragment", 2);
 				changeControlFragment(active_fragment);
 				lastSelectedItemActionBar=active_fragment;
+				activity_result=true;
+			} else {
+				lastSelectedItemActionBar=2;
+			}
+			activity_result=true;
+		}
+		
+		if (requestCode == MAP_VIEW_ACTIVITY){
+			if (data!=null){
+				int active_fragment=data.getIntExtra("active_fragment", 2);
+				changeControlFragment(active_fragment);
+				lastSelectedItemActionBar=active_fragment;
+				activity_result=true;
 			} else {
 				lastSelectedItemActionBar=2;
 			}

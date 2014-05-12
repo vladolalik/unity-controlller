@@ -9,6 +9,8 @@
     <item name="MAX_VALUE_JOYSTICK_MOV" type="integer">10</item>
 
     <string name="help">Pomoc</string>
+    <string name="MAP">SHOW_MAP</string>
+    <string name="map_txt">Mapa</string>
     <string name="CONNECT_TO_SERVER">ConnectToServer</string>
     <string name="CONNECT_ACCEPT">ConnectAccept</string>
     <string name="CONNECT_DECLINE">ConnectDecline</string>
