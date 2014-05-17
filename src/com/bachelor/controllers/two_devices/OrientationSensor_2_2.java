@@ -36,7 +36,7 @@ public class OrientationSensor_2_2 extends Fragment {
 
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
-				ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+				ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		View view = inflater.inflate(R.layout.orientation_2_2, container,
 				false);
 		sm = (SensorManager) getActivity().getSystemService(
@@ -111,25 +111,25 @@ public class OrientationSensor_2_2 extends Fragment {
 			if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
 				
 				//float headingAngle=event.values[0];
-				float pitchValue=event.values[1];		
+				float pitchValue=event.values[0];		
 				for (int i=0; i<intensityLeft.length; i++){
 					intensityLeft[i].setVisibility(View.INVISIBLE);
 					intensityRight[i].setVisibility(View.INVISIBLE);
 					
 					if (pitchValue>0){
 						if (pitchValue>i*1.5+0.2){
-							intensityRight[i].setVisibility(View.VISIBLE);
+							intensityLeft[i].setVisibility(View.VISIBLE);
 						}
 					} else {	
 						if (Math.abs(pitchValue)>i*1.5+0.2){
-							intensityLeft[i].setVisibility(View.VISIBLE);
+							intensityRight[i].setVisibility(View.VISIBLE);
 						}
 					}
 				}
 				//float rollAngle=event.values[2];
 				if (isAdded()){
 					if (Math.abs(pitchValue)>0.5){
-						sendMessage(getResources().getString(R.string.ROTATE_MSG) + " " + pitchValue);
+						sendMessage(getResources().getString(R.string.ROTATE_MSG) + " " + (-1)*pitchValue);
 					} 
 				} else {
 					Log.d("OrientationFragment", "not attached to activity");

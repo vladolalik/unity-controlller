@@ -17,9 +17,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import com.bachelor.networking.DataStorage;
-import com.bachelor.networking.ImageStorage;
 import com.example.resultrecdemo.R;
 import com.example.resultrecdemo.util.SystemUiHider;
 

@@ -36,7 +36,7 @@ public class OrientationSensor_1_2 extends Fragment {
 
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
-				ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+				ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		View view = inflater.inflate(R.layout.orientation_1_2, container,
 				false);
 		/*sm = (SensorManager) getActivity().getSystemService(

@@ -41,7 +41,7 @@ class UpdateUIMenu implements Runnable {
 				Intent i = new Intent(menuActivity, TextViewActivity.class);
 				Bundle b = new Bundle();
 				//b.putString("text", aData[1]);
-				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
+				i.putExtra("DataStorage", new DataStorage(aData[1]));
 				b.putInt("active_fragment", menuActivity.mainActivityActiveFragment);
 				i.putExtras(b);
 				menuActivity.startActivityForResult(i, menuActivity.TEXT_VIEW_ACTIVITY);

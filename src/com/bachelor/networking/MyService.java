@@ -58,7 +58,7 @@ public class MyService extends IntentService {
 				byte[] buf = new byte[65535];
 				DatagramPacket receivePacket = new DatagramPacket(buf,
 						buf.length);
-				socket.setSoTimeout(50);
+				socket.setSoTimeout(10);
 				socket.receive(receivePacket);
 				byte[] flag=new byte[3];
 				

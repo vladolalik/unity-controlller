@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bachelor.networking.MyService.StopReceiver;
 import com.example.resultrecdemo.R;
 
 @SuppressLint("ValidFragment") public class HomeFragment extends Fragment{
@@ -59,11 +61,12 @@ import com.example.resultrecdemo.R;
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					if (serverIP == null)
-						((MainActivity) getActivity()).getServerIP();
-					else
-						Toast.makeText(((MainActivity) getActivity()), "You are already connected to server",
-								Toast.LENGTH_SHORT).show();
+					Intent sIntent = new Intent();
+					sIntent.setAction(StopReceiver.ACTION_STOP);
+					MainActivity main=(MainActivity)getActivity();
+					main.sendBroadcast(sIntent);
+					main.intent = null;
+					main.getServerIP();
 					
 				}
 			});

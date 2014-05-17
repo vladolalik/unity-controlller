@@ -76,7 +76,13 @@ public class OrientationSensor_1_1 extends Fragment {
 				sendMessage(getResources().getString(R.string.MSG_QUIT));
 			}
 		});
+		
+		Button rotateUP=(Button)view.findViewById(R.id.rotate_up_orient);
+		rotateUP.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 1", (MainActivity)getActivity()));
 
+		Button rotateDown=(Button)view.findViewById(R.id.rotate_down_orient);
+		rotateDown.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 0", (MainActivity)getActivity()));
+		
 		return view;
 	}
 	

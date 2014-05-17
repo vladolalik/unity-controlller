@@ -53,7 +53,7 @@ public class ChangeFragment {
 			fr = new HomeFragment();
 			fr.setArguments(bundle);
 			break;
-		case 2:
+		case 1:
 			if (count_of_dev==1)
 			{
 				if (my_number==1){
@@ -70,7 +70,7 @@ public class ChangeFragment {
 			}
 			//fr.setArguments(bundle);
 			break;	
-		case 3:
+		case 2:
 			if (count_of_dev==1)
 			{
 				if (my_number==1){
@@ -88,7 +88,7 @@ public class ChangeFragment {
 			
 			//fr.setArguments(bundle);
 			break;
-		case 4:
+		case 3:
 			if (count_of_dev==1)
 			{
 				if (my_number==1){
@@ -105,10 +105,10 @@ public class ChangeFragment {
 			}
 			break;
 
-		case 5:
+		case 4:
 			fr =new SteeringWheelFragment();
 			break;
-		case 6:
+		case 5:
 			if (count_of_dev==1)
 			{
 				if (my_number==1){

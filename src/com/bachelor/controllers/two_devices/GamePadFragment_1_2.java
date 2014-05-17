@@ -1,5 +1,6 @@
 package com.bachelor.controllers.two_devices;
 
+import com.bachelor.controllers.one_device.ButtonHoldingOnTouchListener;
 import com.bachelor.networking.SendMessageMain;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
@@ -10,7 +11,6 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,56 +41,18 @@ public class GamePadFragment_1_2 extends Fragment {
 		vibrator = (Vibrator) getActivity().getSystemService(
 				Context.VIBRATOR_SERVICE);
 		Button mvLeft = (Button) view.findViewById(R.id.buttonMovLeft);
-		mvLeft.setOnClickListener(new OnClickListener() {
+		mvLeft.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_LEFT), (MainActivity)getActivity()));
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				vibrator.vibrate(50);
-				Log.d("Click", "mvLeft");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_LEFT));
-
-			}
-		});
+			
 
 		Button mvRight = (Button) view.findViewById(R.id.buttonMovRight);
-		mvRight.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				vibrator.vibrate(50);
-				Log.d("Click", "mvRight");
-				sendMessage(getResources()
-						.getString(R.string.JOYSTICK_MV_RIGHT));
-
-			}
-		});
+		mvRight.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_RIGHT), (MainActivity)getActivity()));
 
 		Button mvUp = (Button) view.findViewById(R.id.buttonMovFV);
-		mvUp.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				vibrator.vibrate(50);
-				Log.d("Click", "mvUp");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_FV));
-
-			}
-		});
+		mvUp.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_FV), (MainActivity)getActivity()));
 
 		Button mvDown = (Button) view.findViewById(R.id.buttonMovBack);
-		mvDown.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				vibrator.vibrate(50);
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_MV_BACK));
-			}
-		});
+		mvDown.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_MV_BACK), (MainActivity)getActivity()));
 		
 		Button action = (Button) view.findViewById(R.id.action_button_1_2);
 		action.setOnClickListener(new OnClickListener() {

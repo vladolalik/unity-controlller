@@ -97,7 +97,7 @@ class UpdateUI implements Runnable {
 				Intent i = new Intent(mainActivity, TextViewActivity.class);
 				Bundle b = new Bundle();
 				//b.putString("text", aData[1]);
-				i.putExtra("DataStorage", new DataStorage(this.msgFromServer));
+				i.putExtra("DataStorage", new DataStorage(aData[1]));
 				b.putInt("active_fragment", mainActivity.lastSelectedItemActionBar);
 				i.putExtras(b);
 				 /*stop receiving service */

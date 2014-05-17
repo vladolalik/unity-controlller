@@ -67,12 +67,23 @@
                     android:layout_toLeftOf="@+id/intensity_left_4"
                     android:src="@drawable/intensity_5" />
 
+                <Button
+                    android:id="@+id/rotate_up_orient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="102dp"
+                    android:layout_alignBottom="@+id/intensity_left_2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/effects_rot_up" />
+
                 <TextView
                     android:id="@+id/introduce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignBottom="@+id/intensity_left_3"
+                    android:layout_marginRight="17dp"
+                    android:layout_toLeftOf="@+id/intensity_left_5"
+                    android:layout_weight="1"
                     android:text="@string/left"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -133,10 +144,21 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="18dp"
+                    android:layout_toRightOf="@+id/intensity_right_5"
                     android:text="@string/right"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Button
+                    android:id="@+id/rotate_down_orient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/intensity_right_2"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/effects_rot_down" />
+
             </RelativeLayout>
         </LinearLayout>
 
@@ -149,14 +171,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/effects_back_arrow" />
-
-    <Button
-        android:id="@+id/buttonMovFV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/effects_fv_arrow" />
 
     <Button
         android:id="@+id/action_button_orient"
@@ -176,5 +190,13 @@
         android:layout_toRightOf="@+id/action_button_orient"
         android:layout_weight="1"
         android:text="@string/quit" />
+
+    <Button
+        android:id="@+id/buttonMovFV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/effects_fv_arrow" />
 
 </RelativeLayout>

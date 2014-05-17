@@ -1,17 +1,17 @@
 package com.bachelor.controllers.two_devices;
 
-import com.bachelor.networking.SendMessageMain;
-import com.bachelor.unity_remote_control.MainActivity;
-import com.example.resultrecdemo.R;
 import android.app.Fragment;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.bachelor.controllers.one_device.ButtonHoldingOnTouchListener;
+import com.bachelor.networking.SendMessageMain;
+import com.bachelor.unity_remote_control.MainActivity;
+import com.example.resultrecdemo.R;
 
 
 public class GamePadFragmentWithArrows_2_2 extends Fragment{
@@ -29,51 +29,20 @@ public class GamePadFragmentWithArrows_2_2 extends Fragment{
 
 		 
 		 Button rtRight = (Button) view.findViewById(R.id.buttonRotRight);
-		 rtRight.setOnClickListener(new OnClickListener() {
+		 rtRight.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_Y) + " 1", (MainActivity)getActivity()));
 			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_ROTATE_Y) + " 1");
-			}
-		 });
 		 
 		 Button rtLeft = (Button) view.findViewById(R.id.buttonRotLeft);
-		 rtLeft.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_ROTATE_Y) + " 0");
-			}
-		 });
+		 rtLeft.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_Y) + " 0", (MainActivity)getActivity()));
 		 
 		 Button rtUP = (Button) view.findViewById(R.id.buttonRotUP);
-		 rtUP.setOnClickListener(new OnClickListener() {
+		 rtUP.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 1", (MainActivity)getActivity()));
 			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 1");
-			}
-		 });
+			
 
 		 Button rtDown = (Button) view.findViewById(R.id.buttonRotDown);
-		 rtDown.setOnClickListener(new OnClickListener() {
+		 rtDown.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 0", (MainActivity)getActivity()));
 			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Log.d("Click", "mvDown");
-				sendMessage(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 0");
-			}
-		 });
-
-
-
 	     return view;
 	   }
 	

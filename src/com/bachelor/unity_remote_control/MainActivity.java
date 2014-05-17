@@ -88,16 +88,14 @@ import com.example.resultrecdemo.R;
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[0],
 				R.drawable.ic_action_dock));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[1],
-				R.drawable.touchpad_icon));
+				R.drawable.ic_action_gamepad));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[2],
-				R.drawable.circle_icon));
+				R.drawable.gamepad_joystick));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[3],
 				R.drawable.gamepad));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[4],
-				R.drawable.gyroscope_icon));
+				R.drawable.steering_wheel_icon));
 		navSpinner.add(new SpinnerNavItem(actionMenuItems[5],
-				R.drawable.gyroscope_icon));
-		navSpinner.add(new SpinnerNavItem(actionMenuItems[6],
 				R.drawable.gyroscope_icon));
 
 		// title drop down adapter
@@ -194,11 +192,22 @@ import com.example.resultrecdemo.R;
 			return true;
 		// pripojenie k serveru prvy krat
 		case R.id.action_connect:
-			if (serverIP == null)
+			/*if (serverIP == null)
 				getServerIP();
 			else
 				Toast.makeText(this, "You are already connected to server",
 						Toast.LENGTH_SHORT).show();
+			return true;*/
+			Log.d("ACTION", "Connect server");
+			// serverIP = null;
+			/*if (intent != null) {
+				stopService(intent);
+			}*/
+			Intent sIntent = new Intent();
+			sIntent.setAction(StopReceiver.ACTION_STOP);
+			sendBroadcast(sIntent);
+			intent = null;
+			getServerIP();
 			return true;
 		// spustenie aktivity s nastaveniami
 		case R.id.action_settings:
@@ -213,7 +222,7 @@ import com.example.resultrecdemo.R;
 			/*if (intent != null) {
 				stopService(intent);
 			}*/
-			Intent sIntent = new Intent();
+			sIntent = new Intent();
 			sIntent.setAction(StopReceiver.ACTION_STOP);
 			sendBroadcast(sIntent);
 			intent = null;
@@ -403,6 +412,8 @@ import com.example.resultrecdemo.R;
 	public void getServerIP() {
 		GetServerIP getIP=new GetServerIP(this);
 		getIP.getAdress();
+		actionBar.setIcon(R.drawable.ic_action_dock);
+		changeControlFragment(0);
 	}
 
 	/**
@@ -490,9 +501,6 @@ import com.example.resultrecdemo.R;
 			case 5:
 				sendMessage(changeControl + " " + typeOfControls[5]);
 				break;	
-			case 6:
-				sendMessage(changeControl + " " + typeOfControls[6]);
-				break;
 
 			default:
 				return true;
@@ -506,10 +514,17 @@ import com.example.resultrecdemo.R;
 			
 			// zmenit obrazok pri navigacii aby reprezentoval prave zvoleny typ ovladania
 			switch (itemPosition) {
-				case 1: break;
-				case 2: actionBar.setIcon(R.drawable.circle_icon);
+				case 0: actionBar.setIcon(R.drawable.ic_action_dock);
+						break;
+				case 1: actionBar.setIcon(R.drawable.ic_action_gamepad);
+						break;
+				case 2:	actionBar.setIcon(R.drawable.gamepad_joystick);
 						break;
 				case 3:	actionBar.setIcon(R.drawable.gamepad);
+						break;
+				case 4:	actionBar.setIcon(R.drawable.steering_wheel_icon);
+						break;
+				case 5:	actionBar.setIcon(R.drawable.gyroscope_icon);
 						break;
 			}
 		}

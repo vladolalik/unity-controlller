@@ -226,7 +226,7 @@ public class MenuViewActivity extends Activity {
 		}
 		mainActivityActiveFragment=b.getInt("active_fragment");
 		String separator=getResources().getString(R.string.TEXT_MENU_SEPARATOR);
-		textFromServer=textFromServer.substring(textFromServer.indexOf(separator));
+		textFromServer=textFromServer.substring(textFromServer.indexOf(separator)+1);
 		final String[] items=textFromServer.split(separator);
 		ArrayAdapter<String> itemsAdapter = 
 			    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
