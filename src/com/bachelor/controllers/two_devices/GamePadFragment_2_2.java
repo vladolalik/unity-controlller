@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.bachelor.controllers.one_device.MyOnTouchListener;
+import com.bachelor.controllers.one_device.AnalogOnTouchListener;
 import com.bachelor.unity_remote_control.MainActivity;
 import com.example.resultrecdemo.R;
 
@@ -42,7 +42,7 @@ public class GamePadFragment_2_2 extends Fragment {
 		imgView = (ImageView) view.findViewById(R.id.imgViewJoyStick);
 		joystickMiddle = (ImageView) view
 				.findViewById(R.id.imageViewJoyStickMiddle);
-		imgView.setOnTouchListener(new MyOnTouchListener(imgView,
+		imgView.setOnTouchListener(new AnalogOnTouchListener(imgView,
 				joystickMiddle, getResources().getString(R.string.ROTATE_MSG),
 				(MainActivity) getActivity()));
 		return view;

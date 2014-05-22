@@ -76,7 +76,7 @@ public class GamePadFragment_1_1 extends Fragment {
 		imgView = (ImageView) view.findViewById(R.id.imgViewJoyStick);
 		joystickMiddle = (ImageView) view
 				.findViewById(R.id.imageViewJoyStickMiddle);
-		imgView.setOnTouchListener(new MyOnTouchListener(imgView, joystickMiddle, getResources().getString(R.string.JOYSTICK_ROTATE), (MainActivity)getActivity()));
+		imgView.setOnTouchListener(new AnalogOnTouchListener(imgView, joystickMiddle, getResources().getString(R.string.JOYSTICK_ROTATE), (MainActivity)getActivity()));
 		return view;
 	}
 	

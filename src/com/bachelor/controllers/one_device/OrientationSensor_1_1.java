@@ -30,12 +30,13 @@ public class OrientationSensor_1_1 extends Fragment {
 	ImageView[] intensityRight=new ImageView[5];
 	ImageView[] intensityForward=new ImageView[5];
 	ImageView[] intensityBack=new ImageView[5];
+	MyAccelerometerListener myAccelerometerListener;
 
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		myAccelerometerListener = new MyAccelerometerListener(intensityLeft, intensityRight, this);
 		// Inflate the layout for this fragment
 		getActivity().setRequestedOrientation(
 				ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -78,10 +79,10 @@ public class OrientationSensor_1_1 extends Fragment {
 		});
 		
 		Button rotateUP=(Button)view.findViewById(R.id.rotate_up_orient);
-		rotateUP.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 1", (MainActivity)getActivity()));
+		rotateUP.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 0", (MainActivity)getActivity()));
 
 		Button rotateDown=(Button)view.findViewById(R.id.rotate_down_orient);
-		rotateDown.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 0", (MainActivity)getActivity()));
+		rotateDown.setOnTouchListener(new ButtonHoldingOnTouchListener(getResources().getString(R.string.JOYSTICK_ROTATE_X) + " 1", (MainActivity)getActivity()));
 		
 		return view;
 	}
@@ -114,8 +115,10 @@ public class OrientationSensor_1_1 extends Fragment {
     	super.onDestroy();
     	sm.unregisterListener(myAccelerometerListener);
     }
+    
+   
 
-	final  SensorEventListener myAccelerometerListener = new SensorEventListener() {
+	/*final  SensorEventListener myAccelerometerListener = new SensorEventListener() {
 
 		@Override
 		public void onSensorChanged(SensorEvent event) {
@@ -155,13 +158,13 @@ public class OrientationSensor_1_1 extends Fragment {
 				Log.d("headingAngle", String.valueOf(headingAngle));
 				Log.d("pitchAngle", String.valueOf(pitchAngle));
 				Log.d("rollAngle", String.valueOf(rollAngle));
-				*/
+				
 			}
 		}
 
 		@Override
 		public void onAccuracyChanged(Sensor sensor, int accuracy) {}
-	};
+	};*/
 	
 	private void sendMessage(String msg){
 		new SendMessageMain((MainActivity)getActivity()).execute(msg);

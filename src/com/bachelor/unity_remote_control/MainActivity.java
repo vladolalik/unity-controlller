@@ -478,33 +478,12 @@ import com.example.resultrecdemo.R;
 
 			String changeControl = getResources()
 					.getString(R.string.CHANGE_CONTROL);
-			switch (itemPosition) {
-			case 0:
+			
+			if (itemPosition==0){
 				return true;
-
-			case 1:
-				sendMessage(changeControl + " " + typeOfControls[1]);
-				break;
-
-			case 2:
-				sendMessage(changeControl + " " + typeOfControls[2]);
-				Log.d("pokus", "2");
+			} else if (itemPosition>0 && itemPosition<6){
+				sendMessage(changeControl + " " + typeOfControls[itemPosition]);
 				return true;
-
-			case 3:
-				sendMessage(changeControl + " " + typeOfControls[3]);
-				break;
-
-			case 4:
-				sendMessage(changeControl + " " + typeOfControls[4]);
-				break;
-			case 5:
-				sendMessage(changeControl + " " + typeOfControls[5]);
-				break;	
-
-			default:
-				return true;
-
 			}
 			return false;
 			///

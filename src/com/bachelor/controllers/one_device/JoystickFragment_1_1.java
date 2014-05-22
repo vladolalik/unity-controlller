@@ -53,8 +53,8 @@ public class JoystickFragment_1_1 extends Fragment  {
 		imgViewMov = (ImageView) view.findViewById(R.id.imgViewJoystickMov);
 		joystickMidMov = (ImageView) view
 				.findViewById(R.id.imgViewJoystickMidMov);
-		imgView.setOnTouchListener(new MyOnTouchListener(imgView, joystickMiddle, getActivity().getResources().getString(R.string.JOYSTICK_ROTATE), (MainActivity)getActivity()));
-		imgViewMov.setOnTouchListener(new MyOnTouchListener(imgViewMov, joystickMidMov, getActivity().getResources().getString(R.string.JOYSTICK_MV), (MainActivity)getActivity()));
+		imgView.setOnTouchListener(new AnalogOnTouchListener(imgView, joystickMiddle, getActivity().getResources().getString(R.string.JOYSTICK_ROTATE), (MainActivity)getActivity()));
+		imgViewMov.setOnTouchListener(new AnalogOnTouchListener(imgViewMov, joystickMidMov, getActivity().getResources().getString(R.string.JOYSTICK_MV), (MainActivity)getActivity()));
 		Button action = (Button) view.findViewById(R.id.action_button);
 		action.setOnClickListener(new OnClickListener() {
 			

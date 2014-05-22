@@ -5,10 +5,12 @@ import java.net.UnknownHostException;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,8 +23,8 @@ import android.widget.ListView;
 
 import com.bachelor.networking.ImageStorage;
 import com.bachelor.networking.MyService;
-import com.bachelor.networking.SendMessageMenu;
 import com.bachelor.networking.MyService.StopReceiver;
+import com.bachelor.networking.SendMessageMenu;
 import com.example.resultrecdemo.R;
 import com.example.resultrecdemo.util.SystemUiHider;
 
@@ -66,6 +68,7 @@ public class MenuViewActivity extends Activity {
 	MenuResultReceiver resultReceiver;
 	Intent intent;
 	ImageStorage semafor;
+	Vibrator vibrator;
 	
 	public void startService() {
 		if (intent == null) {
@@ -134,7 +137,8 @@ public class MenuViewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_menu_view);
-	
+		vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 		
 		
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
@@ -245,6 +249,7 @@ public class MenuViewActivity extends Activity {
 				returnIntent.putExtra(getResources().getString(R.string.CLIENT_SEND_MENU_ITEM),items[arg2]);
 				setResult(RESULT_OK,returnIntent);     
 				finish();*/
+				vibrator.vibrate(50);
 				sendMessage(items[arg2]);
 				
 			}

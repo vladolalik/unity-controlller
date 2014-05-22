@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-public class MyOnTouchListener implements View.OnTouchListener  {
+public class AnalogOnTouchListener implements View.OnTouchListener  {
 
 	float dx, dy, _xDelta, _yDelta;
 	ImageView backView, midView;
@@ -19,7 +19,7 @@ public class MyOnTouchListener implements View.OnTouchListener  {
 	MainActivity mainActivity;
 	private Handler mHandler;
 	
-	public MyOnTouchListener(ImageView backView, ImageView midView, String msg, MainActivity mainActivity){
+	public AnalogOnTouchListener(ImageView backView, ImageView midView, String msg, MainActivity mainActivity){
 		this.backView=backView;
 		this.midView=midView;
 		this.mainActivity=mainActivity;
