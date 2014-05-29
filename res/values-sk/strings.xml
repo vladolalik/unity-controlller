@@ -72,5 +72,11 @@
     <string name="SELECT">SELECT</string>
     <string name="IMG_SERVER">IMAGE</string>
     <string name="title_activity_image_view">ImageViewActivity</string>
+    <string name="home_menu">Domov</string>
+    <string name="joystick_menu">Joystick</string>
+    <string name="gam_joy_menu">Gamepad + Joystick</string>
+    <string name="gamepad_menu">Gamepad</string>
+    <string name="steering_menu">Volant F1</string>
+    <string name="orient_menu">Orientačný Senzor</string>
 
 </resources>

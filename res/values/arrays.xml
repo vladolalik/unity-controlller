@@ -5,12 +5,12 @@
     	<item>2</item>
     </string-array>
     <string-array name="action_list">
-        <item>Home</item>
-        <item>Joystick</item>
-        <item>Gamepad + Joystick</item>
-        <item>Gamepad</item>
-        <item>Steering Wheel</item>
-        <item>Orientation sensor</item>
+        <item>@string/home_menu</item>
+        <item>@string/joystick_menu</item>
+        <item>@string/gam_joy_menu</item>
+        <item>@string/gamepad_menu</item>
+        <item>@string/steering_menu</item>
+        <item>@string/orient_menu</item>
     </string-array>
     
     <string-array name="typesOfControl">
